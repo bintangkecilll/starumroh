@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Detail Paket Umroh - Hello Star 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .gold-gradient { background: linear-gradient(135deg, #D4AF37 0%, #F9E498 50%, #B8860B 100%); }
+        .nav-solid { background: #064e3b; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .tab-btn.active { border-bottom: 3px solid #D4AF37; color: #D4AF37; font-weight: bold; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .sticky-sidebar { top: 100px; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="fixed w-full z-50 nav-solid py-4 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 flex justify-between items-center text-white">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 gold-gradient rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-star text-white"></i></div>
+                <span class="text-2xl font-bold tracking-tighter">HELLO <span class="text-yellow-400">STAR</span></span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="#" class="hover:text-yellow-400 transition">Beranda</a>
+                <a href="paket.html" class="hover:text-yellow-400 transition">Paket Umroh</a>
+                <a href="about.html" class="hover:text-yellow-400 transition">Tentang Kami</a>
+                <a href="galeri.html" class="hover:text-yellow-400 transition">Galeri</a>
+                <a href="blog.html" class="hover:text-yellow-400 transition">Blog</a>
+            </div>
+            <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-full font-bold shadow-lg transition transform hover:scale-105">
+                <i class="fab fa-whatsapp mr-2"></i> Konsultasi
+            </button>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 pt-32 pb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <div class="w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl">
+                    <img id="pkg-image" src="" class="w-full h-full object-cover">
+                </div>
+
+                <div>
+                    <h1 id="pkg-title" class="text-3xl md:text-4xl font-bold text-emerald-900 mb-2"></h1>
+                    <p class="text-gray-500 flex items-center"><i class="fas fa-map-marker-alt mr-2 text-yellow-600"></i> Keberangkatan: Jakarta (Soekarno-Hatta)</p>
+                    <div class="mt-6 bg-emerald-800 text-white p-4 rounded-xl inline-block shadow-lg">
+                        <span class="text-sm block opacity-80 uppercase tracking-widest">Harga Paket Mulai</span>
+                        <span id="pkg-price" class="text-3xl font-bold"></span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-gray-200 text-center">
+                    <div><i class="fas fa-calendar-day text-2xl text-yellow-600 mb-2"></i><p id="pkg-days" class="text-sm font-bold"></p></div>
+                    <div><i class="fas fa-plane-departure text-2xl text-yellow-600 mb-2"></i><p id="pkg-airline" class="text-sm font-bold"></p></div>
+                    <div><i class="fas fa-hotel text-2xl text-yellow-600 mb-2"></i><p id="pkg-stars" class="text-sm font-bold"></p></div>
+                    <div><i class="fas fa-users text-2xl text-yellow-600 mb-2"></i><p class="text-sm font-bold">Sisa 5 Kursi</p></div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border">
+                    <div class="flex border-b mb-6 space-x-8 overflow-x-auto">
+                        <button onclick="switchTab(this, 'detail-hotel')" class="tab-btn active pb-2 whitespace-nowrap">Hotel</button>
+                        <button onclick="switchTab(this, 'detail-include')" class="tab-btn pb-2 whitespace-nowrap">Include</button>
+                        <button onclick="switchTab(this, 'detail-exclude')" class="tab-btn pb-2 whitespace-nowrap">Exclude</button>
+                    </div>
+                    <div id="detail-hotel" class="tab-content active"></div>
+                    <div id="detail-include" class="tab-content"></div>
+                    <div id="detail-exclude" class="tab-content"></div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border">
+                    <h3 class="text-xl font-bold mb-6 text-emerald-900">Rencana Perjalanan (Itinerary)</h3>
+                    <div id="itinerary-container" class="space-y-6"></div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1">
+                <div class="sticky sticky-sidebar space-y-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-xl border">
+                        <h4 class="font-bold text-lg mb-4 text-emerald-900">Booking Kursi</h4>
+                        <div class="space-y-4">
+                            <div><label class="text-xs text-gray-400 uppercase font-bold">Tanggal Berangkat</label><input id="pkg-date" type="text" class="w-full bg-gray-50 p-3 rounded-lg border focus:outline-none" readonly></div>
+                            <a id="wa-btn" href="#" target="_blank" class="w-full bg-emerald-800 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-emerald-900 transition flex items-center justify-center">
+                                <i class="fas fa-paper-plane mr-2"></i> Amankan Sekarang
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+                        <h4 class="font-bold text-sm mb-4 border-b pb-2">Estimasi Biaya Per Pax</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between text-sm"><span class="text-gray-500">Kamar Quad</span><span id="est-price" class="font-bold"></span></div>
+                            <div class="flex justify-between text-sm"><span class="text-gray-500">Perlengkapan</span><span class="font-bold text-green-600">Include</span></div>
+                            <div class="pt-3 border-t flex justify-between"><span class="font-bold">Total Harga</span><span id="total-price" class="font-bold text-emerald-900"></span></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border text-center">
+                        <img src="img/testimoni1.jpeg" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-yellow-500 object-cover">
+                        <h4 class="font-bold text-emerald-900">Ustadz Hendra Wijaya</h4>
+                        <p class="text-xs text-gray-500">Pembimbing Utama Hello Star</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h4 class="font-bold text-lg">Paket Menarik Lainnya</h4>
+                        <div id="other-packages" class="space-y-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-emerald-900 text-white pt-20 pb-10 border-t border-emerald-800">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+                <div class="flex items-center justify-center md:justify-start space-x-2 mb-6">
+                    <div class="w-8 h-8 gold-gradient rounded-full flex items-center justify-center"><i class="fas fa-star text-white text-xs"></i></div>
+                    <span class="text-2xl font-bold tracking-tighter">HELLO <span class="text-yellow-400">STAR</span></span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">Penyelenggara Perjalanan Ibadah Umroh (PPIU) Resmi. Melayani sepenuh hati dengan standar layanan premium bintang 5.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Navigasi</h4>
+                <ul class="space-y-3 text-gray-300 text-sm">
+                    <li><a href="#" class="hover:text-yellow-400">Beranda</a></li>
+                    <li><a href="#paket" class="hover:text-yellow-400">Paket Umroh</a></li>
+                    <li><a href="#tentang" class="hover:text-yellow-400">Tentang Kami</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Informasi</h4>
+                <ul class="space-y-3 text-gray-300 text-sm">
+                    <li>+62 812 3456 7890</li>
+                    <li>info@hellostar.com</li>
+                    <li>Jakarta, Indonesia</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Ikuti Kami</h4>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-emerald-800 mt-16 pt-8 text-center text-gray-400 text-xs">
+            © 2026 HELLO STAR Travel. All Rights Reserved.
+        </div>
+    </footer>
+
+
+    <script>
+        const packageData = {
+            turki: {
+                title: "Umroh Plus Turki Premium 2026", price: "Rp 35.900.000", days: "12 Hari", airline: "Turkish Airlines", stars: "Bintang 5", date: "14 Februari 2026",
+                img: "img/umroh2.jpeg",
+                hotel: `<div class="space-y-4">
+                    <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl"><i class="fas fa-kaaba text-emerald-800"></i><div><h4 class="font-bold">Makkah: Movenpick Hajar</h4><p class="text-sm">Front Masjidil Haram</p></div></div>
+                    <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl"><i class="fas fa-mosque text-emerald-800"></i><div><h4 class="font-bold">Madinah: Al Harram Hotel</h4><p class="text-sm">Halaman Masjid Nabawi</p></div></div>
+                </div>`,
+                include: `<ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm"><li>Tiket PP Ekonomi</li><li>Visa Umroh & Turki</li><li>Makan 3x Sehari</li><li>Bus AC Eksklusif</li></ul>`,
+                exclude: `<ul class="text-sm"><li>Paspor</li><li>Tips Mutawwif</li><li>Keperluan Pribadi</li></ul>`,
+                itinerary: [
+                    "Jakarta - Istanbul: Berkumpul di bandara dan terbang menuju Istanbul.",
+                    "Istanbul Tour: Mengunjungi Blue Mosque, Hagia Sophia, dan Istana Topkapi.",
+                    "Bosphorus: Menikmati cruise di Selat Bosphorus dan belanja di Grand Bazaar.",
+                    "Istanbul - Madinah: Terbang menuju Madinah, check-in hotel dan istirahat.",
+                    "Ibadah Nabawi: Shalat di Raudhah dan ziarah Makam Rasulullah SAW.",
+                    "Ziarah Madinah: Masjid Quba, Jabal Uhud, dan Kebun Kurma.",
+                    "Madinah - Makkah: Mengambil Miqat di Bir Ali dan melaksanakan Umroh Pertama.",
+                    "Ibadah Makkah: Fokus ibadah di Masjidil Haram, Tadarus dan Thawaf Sunnah.",
+                    "Ziarah Makkah: Padang Arafah, Jabal Rahmah, Mina, dan Muzdalifah.",
+                    "Umroh Kedua: Fasilitas bagi yang ingin Umroh lagi dari Miqat Ji'ronah.",
+                    "Jeddah - Jakarta: Thawaf Wada, City Tour Jeddah, transfer ke Bandara.",
+                    "Tiba di Jakarta: Tiba dengan selamat di Indonesia. Program Selesai."
+                ]
+            },
+            ramadhan: {
+                title: "Umroh Full Ramadhan 2026", price: "Rp 48.500.000", days: "15 Hari", airline: "Saudia Airlines", stars: "Bintang 4", date: "25 Maret 2026",
+                img: "img/umroh4s.webp",
+                hotel: `<div class="space-y-4">
+                    <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl"><i class="fas fa-kaaba text-emerald-800"></i><div><h4 class="font-bold">Makkah: Movenpick Hajar</h4><p class="text-sm">Front Masjidil Haram</p></div></div>
+                    <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl"><i class="fas fa-mosque text-emerald-800"></i><div><h4 class="font-bold">Madinah: Al Harram Hotel</h4><p class="text-sm">Halaman Masjid Nabawi</p></div></div>
+                </div>`,
+                include: `<ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm"><li>Tiket Saudia Airlines</li><li>Menu Berbuka & Sahur Indo</li><li>Visa Ramadhan</li></ul>`,
+                exclude: `<p class="text-sm">Laundry & Paspor.</p>`,
+                itinerary: [
+                    "Jakarta - Istanbul: Berkumpul di bandara dan terbang menuju Istanbul.",
+                    "Istanbul Tour: Mengunjungi Blue Mosque, Hagia Sophia, dan Istana Topkapi.",
+                    "Bosphorus: Menikmati cruise di Selat Bosphorus dan belanja di Grand Bazaar.",
+                    "Istanbul - Madinah: Terbang menuju Madinah, check-in hotel dan istirahat.",
+                    "Ibadah Nabawi: Shalat di Raudhah dan ziarah Makam Rasulullah SAW.",
+                    "Ziarah Madinah: Masjid Quba, Jabal Uhud, dan Kebun Kurma.",
+                    "Madinah - Makkah: Mengambil Miqat di Bir Ali dan melaksanakan Umroh Pertama.",
+                    "Ibadah Makkah: Fokus ibadah di Masjidil Haram, Tadarus dan Thawaf Sunnah.",
+                    "Ziarah Makkah: Padang Arafah, Jabal Rahmah, Mina, dan Muzdalifah.",
+                    "Umroh Kedua: Fasilitas bagi yang ingin Umroh lagi dari Miqat Ji'ronah.",
+                    "Jeddah - Jakarta: Thawaf Wada, City Tour Jeddah, transfer ke Bandara.",
+                    "Tiba di Jakarta: Tiba dengan selamat di Indonesia. Program Selesai."
+                ]
+            },
+            itikaf: {
+                title: "Umroh Itikaf Ramadhan 2026", price: "Rp 31.900.000", days: "9 Hari", airline: "Lion Premium", stars: "Bintang 4", date: "10 Januari 2026",
+                img: "img/umroh3s.webp",
+                hotel: `<div class="space-y-4">
+                    <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl"><i class="fas fa-kaaba text-emerald-800"></i><div><h4 class="font-bold">Makkah: Movenpick Hajar</h4><p class="text-sm">Front Masjidil Haram</p></div></div>
+                    <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl"><i class="fas fa-mosque text-emerald-800"></i><div><h4 class="font-bold">Madinah: Al Harram Hotel</h4><p class="text-sm">Halaman Masjid Nabawi</p></div></div>
+                </div>`,
+                include: `<p class="text-sm">Perlengkapan Lengkap, Muthawwif Senior.</p>`,
+                exclude: `<p class="text-sm">Laundry & Keperluan Pribadi.</p>`,
+                itinerary: [
+                    "Jakarta - Istanbul: Berkumpul di bandara dan terbang menuju Istanbul.",
+                    "Istanbul Tour: Mengunjungi Blue Mosque, Hagia Sophia, dan Istana Topkapi.",
+                    "Bosphorus: Menikmati cruise di Selat Bosphorus dan belanja di Grand Bazaar.",
+                    "Istanbul - Madinah: Terbang menuju Madinah, check-in hotel dan istirahat.",
+                    "Ibadah Nabawi: Shalat di Raudhah dan ziarah Makam Rasulullah SAW.",
+                    "Ziarah Madinah: Masjid Quba, Jabal Uhud, dan Kebun Kurma.",
+                    "Madinah - Makkah: Mengambil Miqat di Bir Ali dan melaksanakan Umroh Pertama.",
+                    "Ibadah Makkah: Fokus ibadah di Masjidil Haram, Tadarus dan Thawaf Sunnah.",
+                    "Ziarah Makkah: Padang Arafah, Jabal Rahmah, Mina, dan Muzdalifah.",
+                    "Umroh Kedua: Fasilitas bagi yang ingin Umroh lagi dari Miqat Ji'ronah.",
+                    "Jeddah - Jakarta: Thawaf Wada, City Tour Jeddah, transfer ke Bandara.",
+                    "Tiba di Jakarta: Tiba dengan selamat di Indonesia. Program Selesai."
+                ]
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id') || 'turki';
+        const data = packageData[id];
+
+        // Tampilkan Data
+        document.getElementById('page-title').innerText = data.title;
+        document.getElementById('pkg-title').innerText = data.title;
+        document.getElementById('pkg-price').innerText = data.price;
+        document.getElementById('est-price').innerText = data.price;
+        document.getElementById('total-price').innerText = data.price;
+        document.getElementById('pkg-days').innerText = data.days;
+        document.getElementById('pkg-airline').innerText = data.airline;
+        document.getElementById('pkg-stars').innerText = data.stars;
+        document.getElementById('pkg-date').value = data.date;
+        document.getElementById('pkg-image').src = data.img;
+        document.getElementById('detail-hotel').innerHTML = data.hotel;
+        document.getElementById('detail-include').innerHTML = data.include;
+        document.getElementById('detail-exclude').innerHTML = data.exclude;
+
+        // WA Link Otomatis
+        const waLink = `https://wa.me/6281234567890?text=Halo%20Hello%20Star,%20saya%20ingin%20memesan%20${encodeURIComponent(data.title)}.%20Mohon%20info%20selanjutnya.`;
+        document.getElementById('wa-btn').href = waLink;
+
+        // Itinerary
+        const container = document.getElementById('itinerary-container');
+        data.itinerary.forEach((desc, i) => {
+            container.innerHTML += `
+                <div class="flex">
+                    <div class="flex flex-col items-center mr-4">
+                        <div class="w-8 h-8 rounded-full gold-gradient flex items-center justify-center text-white text-xs font-bold">${i + 1}</div>
+                        ${i < data.itinerary.length - 1 ? '<div class="w-0.5 h-full bg-gray-200"></div>' : ''}
+                    </div>
+                    <div class="pb-6"><h4 class="font-bold text-emerald-900">Hari ${i + 1}</h4><p class="text-sm text-gray-500 leading-relaxed">${desc}</p></div>
+                </div>`;
+        });
+
+        // Paket Lainnya
+        const otherContainer = document.getElementById('other-packages');
+        Object.keys(packageData).forEach(key => {
+            if(key !== id) {
+                const p = packageData[key];
+                otherContainer.innerHTML += `
+                    <a href="detail.html?id=${key}" class="flex space-x-4 bg-white p-3 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                        <div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0"><img src="${p.img}" class="w-full h-full object-cover"></div>
+                        <div class="flex-grow">
+                            <h5 class="text-sm font-bold text-emerald-900 leading-tight">${p.title}</h5>
+                            <p class="text-xs font-bold text-yellow-600 mt-1">${p.price}</p>
+                        </div>
+                    </a>`;
+            }
+        });
+
+        function switchTab(btn, tabId) {
+            const container = btn.parentElement.parentElement;
+            container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            container.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        window.onscroll = () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) { nav.classList.add('py-2'); nav.classList.remove('py-4'); }
+            else { nav.classList.add('py-4'); nav.classList.remove('py-2'); }
+        };
+    </script>
+</body>
+</html>
