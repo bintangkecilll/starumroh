@@ -93,28 +93,58 @@
         .modal-active { display: flex !important; animation: fadeIn 0.3s ease; }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- Custom Style Tambahan --- */
+        #mobile-menu {
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.open {
+            max-height: 400px;
+            padding-bottom: 1rem;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 overflow-x-hidden">
 
     <nav class="fixed w-full z-50 glass-nav py-4 transition-all duration-300" id="navbar">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 gold-gradient rounded-full flex items-center justify-center shadow-lg">
-                    <i class="fas fa-star text-white"></i>
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 gold-gradient rounded-full flex items-center justify-center shadow-lg">
+                        <i class="fas fa-star text-white"></i>
+                    </div>
+                    <span class="text-2xl font-bold tracking-tighter text-white">HELLO <span class="text-yellow-400">STAR</span></span>
                 </div>
-                <span class="text-2xl font-bold tracking-tighter text-white">HELLO <span class="text-yellow-400">STAR</span></span>
+                
+                <div class="hidden md:flex space-x-8 text-white font-medium">
+                    <a href="#" class="hover:text-yellow-400 transition">Beranda</a>
+                    <a href="paket.html" class="hover:text-yellow-400 transition">Paket Umroh</a>
+                    <a href="about.html" class="hover:text-yellow-400 transition">Tentang Kami</a>
+                    <a href="galeri.html" class="hover:text-yellow-400 transition">Galeri</a>
+                    <a href="blog.html" class="hover:text-yellow-400 transition">Blog</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 md:px-6 py-2 rounded-full font-bold shadow-lg transition transform hover:scale-105 flex items-center">
+                        <i class="fab fa-whatsapp md:mr-2 text-xl md:text-base"></i> 
+                        <span class="hidden md:inline">Konsultasi</span>
+                    </button>
+
+                    <button id="hamburger" class="text-white text-2xl md:hidden focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
-            <div class="hidden md:flex space-x-8 text-white font-medium">
+
+            <div id="mobile-menu" class="md:hidden flex flex-col space-y-4 pt-4 text-white font-medium">
                 <a href="#" class="hover:text-yellow-400 transition">Beranda</a>
                 <a href="paket.html" class="hover:text-yellow-400 transition">Paket Umroh</a>
                 <a href="about.html" class="hover:text-yellow-400 transition">Tentang Kami</a>
                 <a href="galeri.html" class="hover:text-yellow-400 transition">Galeri</a>
                 <a href="blog.html" class="hover:text-yellow-400 transition">Blog</a>
             </div>
-            <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-full font-bold shadow-lg transition transform hover:scale-105">
-                <i class="fab fa-whatsapp mr-2"></i> Konsultasi
-            </button>
         </div>
     </nav>
 
@@ -492,9 +522,9 @@
     </section>
 
     <footer class="bg-emerald-900 text-white pt-20 pb-10 border-t border-emerald-800">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-right">
             <div>
-                <div class="flex items-center justify-center md:justify-start space-x-2 mb-6">
+                <div class="flex items-center justify-center md:justify-end space-x-2 mb-6">
                     <div class="w-8 h-8 gold-gradient rounded-full flex items-center justify-center"><i class="fas fa-star text-white text-xs"></i></div>
                     <span class="text-2xl font-bold tracking-tighter">HELLO <span class="text-yellow-400">STAR</span></span>
                 </div>
@@ -503,9 +533,9 @@
             <div>
                 <h4 class="text-lg font-bold mb-6">Navigasi</h4>
                 <ul class="space-y-3 text-gray-300 text-sm">
-                    <li><a href="#" class="hover:text-yellow-400">Beranda</a></li>
-                    <li><a href="#paket" class="hover:text-yellow-400">Paket Umroh</a></li>
-                    <li><a href="#tentang" class="hover:text-yellow-400">Tentang Kami</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition">Beranda</a></li>
+                    <li><a href="#paket" class="hover:text-yellow-400 transition">Paket Umroh</a></li>
+                    <li><a href="about.html" class="hover:text-yellow-400 transition">Tentang Kami</a></li>
                 </ul>
             </div>
             <div>
@@ -518,14 +548,14 @@
             </div>
             <div>
                 <h4 class="text-lg font-bold mb-6">Ikuti Kami</h4>
-                <div class="flex justify-center md:justify-start space-x-4">
+                <div class="flex justify-center md:justify-end space-x-4">
                     <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
-        <div class="border-t border-emerald-800 mt-16 pt-8 text-center text-gray-400 text-xs">
+        <div class="border-t border-emerald-800 mt-16 pt-8 text-center md:text-right text-gray-400 text-xs px-6">
             © 2026 HELLO STAR Travel. All Rights Reserved.
         </div>
     </footer>
@@ -558,6 +588,17 @@
     </div>
 
     <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            const icon = hamburger.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
         const heroData = [
             { bg: "img/umroh1.jpeg", title: "Perjalanan Suci Ke Baitullah Bersama Hello Star", desc: "Wujudkan mimpi ibadah Anda dengan layanan eksklusif dan hotel bintang 5." },
             { bg: "img/umroh3s.webp", title: "Napak Tilas Kejayaan Islam Bersama Keluarga", desc: "Paket lengkap dengan kunjungan situs bersejarah dan akomodasi ternyaman." }
@@ -568,16 +609,18 @@
             currentSlide = (currentSlide + 1) % heroData.length;
             const bg = document.getElementById('hero-bg');
             const cont = document.getElementById('hero-content');
-            bg.style.opacity = '0';
-            setTimeout(() => {
-                bg.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${heroData[currentSlide].bg}')`;
-                bg.style.opacity = '1';
-                cont.classList.remove('text-animate-up');
-                void cont.offsetWidth; 
-                cont.classList.add('text-animate-up');
-                document.getElementById('hero-title').textContent = heroData[currentSlide].title;
-                document.getElementById('hero-desc').textContent = heroData[currentSlide].desc;
-            }, 500);
+            if(bg && cont) {
+                bg.style.opacity = '0';
+                setTimeout(() => {
+                    bg.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${heroData[currentSlide].bg}')`;
+                    bg.style.opacity = '1';
+                    cont.classList.remove('text-animate-up');
+                    void cont.offsetWidth; 
+                    cont.classList.add('text-animate-up');
+                    document.getElementById('hero-title').textContent = heroData[currentSlide].title;
+                    document.getElementById('hero-desc').textContent = heroData[currentSlide].desc;
+                }, 500);
+            }
         }, 4000);
 
         function switchTab(btn, tabId) {
@@ -587,17 +630,6 @@
             btn.classList.add('active');
             document.getElementById(tabId).classList.add('active');
         }
-
-        const setupSlider = (id, leftBtn, rightBtn) => {
-            const el = document.getElementById(id);
-            document.getElementById(rightBtn).onclick = () => el.scrollLeft += 350;
-            document.getElementById(leftBtn).onclick = () => el.scrollLeft -= 350;
-        };
-        setupSlider('slider-container', 'slideLeft', 'slideRight');
-        setupSlider('testi-container', 'testiLeft', 'testiRight');
-
-        const openModal = () => document.getElementById('bookingModal').classList.add('modal-active');
-        const closeModal = () => document.getElementById('bookingModal').classList.remove('modal-active');
 
         window.onscroll = () => {
             const nav = document.getElementById('navbar');
@@ -611,4 +643,5 @@
         };
     </script>
 </body>
+
 </html>
