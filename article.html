@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Detail Artikel - Hello Star</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .gold-gradient { background: linear-gradient(135deg, #D4AF37 0%, #F9E498 50%, #B8860B 100%); }
+        .nav-solid { background: #064e3b; }
+        .sidebar-box { background: #f9fafb; border: 1px solid #e5e7eb; }
+        article h2 { @apply text-2xl font-bold text-emerald-950 mt-10 mb-4 border-l-4 border-yellow-500 pl-4; }
+        article h3 { @apply text-xl font-bold text-emerald-800 mt-6 mb-3; }
+        article p { @apply text-gray-700 leading-relaxed text-lg mb-6 text-justify; }
+        article blockquote { @apply border-l-4 border-emerald-800 pl-6 italic text-xl text-emerald-900 my-10 font-serif bg-emerald-50 py-6 rounded-r-xl; }
+        .promo-gif { @apply w-full rounded-2xl border-4 border-yellow-400 my-8 shadow-xl; }
+    </style>
+</head>
+<body class="bg-white">
+
+    <nav class="fixed w-full z-50 glass-nav py-4 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 gold-gradient rounded-full flex items-center justify-center shadow-lg">
+                        <i class="fas fa-star text-white"></i>
+                    </div>
+                    <span class="text-2xl font-bold tracking-tighter text-white">HELLO <span class="text-yellow-400">STAR</span></span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8 text-white font-medium">
+                    <a href="index.html" class="hover:text-yellow-400 transition">Beranda</a>
+                    <a href="paket.html" class="hover:text-yellow-400 transition">Paket Umroh</a>
+                    <a href="about.html" class="hover:text-yellow-400 transition">Tentang Kami</a>
+                    <a href="galeri.html" class="hover:text-yellow-400 transition">Galeri</a>
+                    <a href="blog.html" class="hover:text-yellow-400 transition">Blog</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 md:px-6 py-2 rounded-full font-bold shadow-lg transition transform hover:scale-105 flex items-center">
+                        <i class="fab fa-whatsapp md:mr-2 text-xl md:text-base"></i> 
+                        <span class="hidden md:inline">Konsultasi</span>
+                    </button>
+
+                    <button id="hamburger" class="text-white text-2xl md:hidden focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="mobile-menu" class="md:hidden flex flex-col space-y-4 pt-4 text-white font-medium">
+                <a href="index.html" class="hover:text-yellow-400 transition">Beranda</a>
+                <a href="paket.html" class="hover:text-yellow-400 transition">Paket Umroh</a>
+                <a href="about.html" class="hover:text-yellow-400 transition">Tentang Kami</a>
+                <a href="galeri.html" class="hover:text-yellow-400 transition">Galeri</a>
+                <a href="blog.html" class="hover:text-yellow-400 transition">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 pt-32 pb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <div class="lg:col-span-8">
+                <h1 id="art-h1" class="text-3xl md:text-5xl font-bold text-emerald-950 mb-8 leading-tight"></h1>
+                
+                <figure class="mb-10">
+                    <img id="art-img" src="" class="w-full h-[450px] object-cover rounded-3xl shadow-xl">
+                    <figcaption id="art-img-cap" class="text-center text-sm text-gray-400 mt-4 italic"></figcaption>
+                </figure>
+
+                <article id="art-body" class="prose max-w-none">
+                    </article>
+
+                <div class="mt-16 bg-gray-50 p-8 rounded-3xl border border-gray-100">
+                    <h2 class="text-2xl font-bold text-emerald-950 mb-6">Pertanyaan Umum (FAQ)</h2>
+                    <div id="art-faq" class="space-y-6"></div>
+                    <div class="mt-12 pt-8 border-t border-gray-200">
+                        <h2 class="text-2xl font-bold text-emerald-950 mb-4 text-center">Kesimpulan</h2>
+                        <p id="art-conclusion" class="italic text-gray-600 text-center"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-4">
+                <div class="sticky top-24 space-y-8">
+                    <div class="sidebar-box p-6 rounded-2xl">
+                        <div class="flex justify-between items-center mb-4 pb-2 border-b">
+                            <h4 class="font-bold text-emerald-950 text-xs tracking-widest uppercase">Daftar Isi</h4>
+                            <button onclick="toggleTOC()" class="text-emerald-800 text-sm"><i id="toc-icon" class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div id="toc-list" class="space-y-3 text-sm text-gray-600"></div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border">
+                        <h4 class="font-bold text-xs uppercase tracking-widest mb-4 text-gray-400">Bagikan Artikel</h4>
+                        <div class="flex space-x-2">
+                            <a id="share-wa" href="#" target="_blank" class="flex-1 p-3 bg-green-500 text-white rounded-xl text-center"><i class="fab fa-whatsapp"></i></a>
+                            <a id="share-fb" href="#" target="_blank" class="flex-1 p-3 bg-blue-600 text-white rounded-xl text-center"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="bg-emerald-950 p-6 rounded-2xl text-white">
+                        <h4 class="font-bold text-xs uppercase tracking-widest mb-6 text-yellow-400">Baca Juga</h4>
+                        <div id="side-related" class="space-y-6"></div>
+                    </div>
+
+                    <div class="bg-gray-100 p-6 rounded-2xl flex items-center space-x-4 border border-gray-200">
+                        <img src="https://i.pravatar.cc/100?u=hellostar" class="w-16 h-16 rounded-full border-2 border-white shadow">
+                        <div>
+                            <h4 class="font-bold text-emerald-950">Tim Redaksi</h4>
+                            <p class="text-xs text-gray-500">Expert Hello Star Travel</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 pt-10 border-t">
+            <h3 class="text-3xl font-bold text-emerald-950 mb-10 text-center">3 Artikel Rekomendasi</h3>
+            <div id="bottom-related" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+        </div>
+    </main>
+
+    <footer class="bg-emerald-900 text-white pt-20 pb-10 border-t border-emerald-800">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+                <div class="flex items-center justify-center md:justify-start space-x-2 mb-6">
+                    <div class="w-8 h-8 gold-gradient rounded-full flex items-center justify-center"><i class="fas fa-star text-white text-xs"></i></div>
+                    <span class="text-2xl font-bold tracking-tighter">HELLO <span class="text-yellow-400">STAR</span></span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">Penyelenggara Perjalanan Ibadah Umroh (PPIU) Resmi. Melayani sepenuh hati dengan standar layanan premium bintang 5.</p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Navigasi</h4>
+                <ul class="space-y-3 text-gray-300 text-sm">
+                    <li><a href="index.html" class="hover:text-yellow-400">Beranda</a></li>
+                    <li><a href="paket.html" class="hover:text-yellow-400">Paket Umroh</a></li>
+                    <li><a href="about.html" class="hover:text-yellow-400">Tentang Kami</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Informasi</h4>
+                <ul class="space-y-3 text-gray-300 text-sm">
+                    <li>+62 812 3456 7890</li>
+                    <li>info@hellostar.com</li>
+                    <li>Jakarta, Indonesia</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Ikuti Kami</h4>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-emerald-800 mt-16 pt-8 text-center text-gray-400 text-xs">
+            © 2026 HELLO STAR Travel. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        const database = {
+            "1": {
+                title: "Persiapan Fisik Sebelum Umroh 2026", img: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa", imgDesc: "Ilustrasi persiapan fisik jamaah sebelum keberangkatan.",
+                content: `
+                    <p>Ibadah Umroh menuntut fisik yang sangat prima. Bayangkan Anda harus berjalan mengelilingi Ka'bah sebanyak tujuh kali (Tawaf) dan berlari kecil di jalur Sai sejauh kurang lebih 3.5 kilometer. Tanpa latihan, kaki Anda akan mudah kram dan stamina menurun drastis di tengah ibadah.</p>
+                    <blockquote>"Kesehatan adalah nikmat yang sering dilupakan manusia hingga mereka jatuh sakit." - Pesan Hikmah Ibadah.</blockquote>
+                    <h2>1. Latihan Jalan Kaki Rutin</h2>
+                    <p>Mulailah berjalan kaki minimal 30-45 menit setiap pagi sebulan sebelum berangkat. Ini membantu melenturkan otot kaki dan meningkatkan daya tahan jantung. Gunakan sepatu olahraga yang nyaman dan empuk untuk menghindari cedera dini sebelum hari keberangkatan tiba.</p>
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKVUn7iM8FMEU24/giphy.gif" class="promo-gif">
+                    <h2>2. Menjaga Pola Makan dan Nutrisi</h2>
+                    <p>Perbanyak konsumsi sayur, buah, dan madu. Hindari makanan yang terlalu berminyak atau pedas yang bisa memicu radang tenggorokan. Mengingat cuaca di Arab Saudi yang panas dan kering, tubuh Anda membutuhkan cadangan nutrisi yang cukup agar tidak mudah terkena flu atau demam saat tiba di lokasi.</p>
+                    <img src="img/umroh1.jpeg" class="w-full rounded-2xl my-6 shadow-md"><p class="text-center text-xs italic text-gray-400 -mt-4">Gbr 1.1: Suasana jamaah sedang beribadah dengan tertib.</p>
+                    <h3>Kesiapan Hidrasi Tubuh</h3>
+                    <p>Latihlah diri Anda untuk minum air putih minimal 2 liter sehari. Di Tanah Suci, Anda akan terpapar matahari terik yang bisa menyebabkan dehidrasi parah. Biasakan membawa botol minum kemanapun Anda pergi agar metabolisme tubuh tetap stabil selama menjalankan urutan ibadah umroh.</p>
+                    <h2>3. Istirahat Cukup Sebelum Berangkat</h2>
+                    <p>Jangan terlalu banyak melakukan aktivitas berat di minggu terakhir sebelum terbang. Anda butuh energi penuh untuk perjalanan pesawat belasan jam dan langsung memulai proses umroh saat tiba di Makkah. Pastikan waktu tidur Anda terjaga minimal 7-8 jam setiap malam.</p>
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKDkDbIDJieKbVm/giphy.gif" class="promo-gif">
+                `,
+                faq: `<div><h5 class="font-bold">Kapan waktu terbaik mulai latihan fisik?</h5><p>Minimal 4-6 minggu sebelum keberangkatan.</p></div>`,
+                conclusion: "Persiapan fisik yang matang adalah kunci ibadah yang tenang dan khusyuk."
+            },
+            // Anda dapat menambahkan ID 2 s/d 9 dengan pola konten yang sama (min 500 kata)
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id') || "1";
+        const art = database[id] || database["1"];
+
+        // Fill Page
+        document.getElementById('page-title').innerText = art.title;
+        document.getElementById('art-h1').innerText = art.title;
+        document.getElementById('art-img').src = art.img;
+        document.getElementById('art-img-cap').innerText = "Foto: " + art.imgDesc;
+        document.getElementById('art-body').innerHTML = art.content;
+        document.getElementById('art-faq').innerHTML = art.faq;
+        document.getElementById('art-conclusion').innerText = art.conclusion;
+
+        // Auto TOC Logic (Sangat Penting)
+        const headings = document.getElementById('art-body').querySelectorAll('h2, h3');
+        const tocList = document.getElementById('toc-list');
+        headings.forEach((h, i) => {
+            h.id = "sec-" + i;
+            tocList.innerHTML += `<a href="#sec-${i}" class="block hover:text-yellow-600 ${h.tagName === 'H3' ? 'ml-4 opacity-70' : 'font-bold'}">${h.innerText}</a>`;
+        });
+
+        function toggleTOC() { document.getElementById('toc-list').classList.toggle('hidden'); document.getElementById('toc-icon').classList.toggle('rotate-180'); }
+
+        // Share Link
+        const url = window.location.href;
+        document.getElementById('share-wa').href = `https://wa.me/?text=Baca ini: ${url}`;
+        document.getElementById('share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+
+        // Related Logic (Baca Juga & Bottom)
+        const sideRel = document.getElementById('side-related');
+        const bottomRel = document.getElementById('bottom-related');
+        const ids = Object.keys(database).filter(k => k !== id).slice(0, 3);
+        
+        ids.forEach(rid => {
+            const r = database[rid];
+            sideRel.innerHTML += `<a href="article.html?id=${rid}" class="block border-b border-white/10 pb-4 hover:text-yellow-400 transition"><h5 class="text-sm font-bold">${r.title}</h5><p class="text-[10px] opacity-50 mt-1 uppercase">Klik Baca Selengkapnya</p></a>`;
+            bottomRel.innerHTML += `
+                <div class="bg-white rounded-2xl shadow-lg border overflow-hidden flex flex-col">
+                    <img src="${r.img}" class="h-40 w-full object-cover">
+                    <div class="p-6 flex-grow">
+                        <h4 class="font-bold text-emerald-950 mb-4">${r.title}</h4>
+                        <a href="article.html?id=${rid}" class="text-yellow-600 font-bold text-xs uppercase tracking-widest hover:text-emerald-800 transition">Baca Selengkapnya</a>
+                    </div>
+                </div>`;
+        });
+
+        // Jika data DB masih sedikit, gunakan dummy untuk "Baca Juga" agar tidak kosong
+        if(ids.length === 0) {
+            sideRel.innerHTML = `<p class='text-xs opacity-50'>Artikel menarik lainnya akan segera hadir.</p>`;
+            bottomRel.innerHTML = `<p class='col-span-3 text-center text-gray-400'>Nantikan artikel edukasi selanjutnya.</p>`;
+        }
+    </script>
+</body>
+</html>
