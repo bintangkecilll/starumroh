@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Hello Star - Ibadah Umroh Eksklusif & Terpercaya 2026</title>
     <meta name="description" content="Daftar paket Umroh 2026 eksklusif bersama Hello Star. Pelayanan bintang 5, hotel dekat Masjidil Haram, dan pembimbing berpengalaman. Cek harga paket Umroh terbaru di sini.">
     <meta name="keywords" content="Umroh 2026, Travel Umroh Terpercaya, Paket Umroh Bintang 5, Hello Star Umroh, Umroh Ramadhan 2026">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Hello Star">
-    
+
     <meta property="og:title" content="Hello Star - Perjalanan Suci Umroh Eksklusif">
     <meta property="og:description" content="Wujudkan ibadah Umroh nyaman dengan fasilitas terbaik bersama Hello Star.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1565552136439-b2f15858654a?q=80&w=1000">
@@ -17,6 +17,15 @@
 
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1041/1041042.png">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041042.png">
+
+    <!-- Performance: Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+
+    <!-- Performance: Preload hero image (LCP) -->
+    <link rel="preload" as="image" href="img/umroh1.jpeg">
 
     <script type="application/ld+json">
     {
@@ -34,11 +43,19 @@
     }
     </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <!-- Tailwind (kept as-is, but defer to reduce main-thread blocking) -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+
+    <!-- Performance: non-blocking CSS (kept same URLs) -->
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/></noscript>
+
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap"></noscript>
+
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
@@ -104,21 +121,51 @@
             max-height: 400px;
             padding-bottom: 1rem;
         }
+
+        /* Accessibility: focus visible */
+        a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visible, input:focus-visible {
+            outline: 3px solid #D4AF37;
+            outline-offset: 2px;
+        }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            html:focus-within { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Utility: screen-reader only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 overflow-x-hidden">
 
-    <nav class="fixed w-full z-50 glass-nav py-4 transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 glass-nav py-4 transition-all duration-300" id="navbar" aria-label="Navigasi utama">
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 gold-gradient rounded-full flex items-center justify-center shadow-lg">
-                        <i class="fas fa-star text-white"></i>
+                <div class="flex items-center space-x-2" aria-label="Logo Hello Star">
+                    <div class="w-10 h-10 gold-gradient rounded-full flex items-center justify-center shadow-lg" aria-hidden="true">
+                        <i class="fas fa-star text-white" aria-hidden="true"></i>
                     </div>
                     <span class="text-2xl font-bold tracking-tighter text-white">HELLO <span class="text-yellow-400">STAR</span></span>
                 </div>
-                
-                <div class="hidden md:flex space-x-8 text-white font-medium">
+
+                <div class="hidden md:flex space-x-8 text-white font-medium" role="navigation" aria-label="Menu desktop">
                     <a href="index.html" class="hover:text-yellow-400 transition">Beranda</a>
                     <a href="paket.html" class="hover:text-yellow-400 transition">Paket Umroh</a>
                     <a href="about.html" class="hover:text-yellow-400 transition">Tentang Kami</a>
@@ -127,18 +174,30 @@
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 md:px-6 py-2 rounded-full font-bold shadow-lg transition transform hover:scale-105 flex items-center">
-                        <i class="fab fa-whatsapp md:mr-2 text-xl md:text-base"></i> 
+                    <button
+                        class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 md:px-6 py-2 rounded-full font-bold shadow-lg transition transform hover:scale-105 flex items-center"
+                        aria-label="Konsultasi via WhatsApp"
+                        type="button"
+                    >
+                        <i class="fab fa-whatsapp md:mr-2 text-xl md:text-base" aria-hidden="true"></i>
                         <span class="hidden md:inline">Konsultasi</span>
+                        <span class="sr-only">Konsultasi</span>
                     </button>
 
-                    <button id="hamburger" class="text-white text-2xl md:hidden focus:outline-none">
-                        <i class="fas fa-bars"></i>
+                    <button
+                        id="hamburger"
+                        class="text-white text-2xl md:hidden focus:outline-none"
+                        aria-label="Buka menu"
+                        aria-controls="mobile-menu"
+                        aria-expanded="false"
+                        type="button"
+                    >
+                        <i class="fas fa-bars" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
 
-            <div id="mobile-menu" class="md:hidden flex flex-col space-y-4 pt-4 text-white font-medium">
+            <div id="mobile-menu" class="md:hidden flex flex-col space-y-4 pt-4 text-white font-medium" role="navigation" aria-label="Menu mobile">
                 <a href="index.html" class="hover:text-yellow-400 transition">Beranda</a>
                 <a href="paket.html" class="hover:text-yellow-400 transition">Paket Umroh</a>
                 <a href="about.html" class="hover:text-yellow-400 transition">Tentang Kami</a>
@@ -148,7 +207,10 @@
         </div>
     </nav>
 
-    <header class="relative h-screen w-full overflow-hidden flex items-center justify-center text-white">
+    <header class="relative h-screen w-full overflow-hidden flex items-center justify-center text-white" aria-label="Hero">
+        <!-- Hidden img to help browser prioritize the LCP asset without changing src -->
+        <img src="img/umroh1.jpeg" alt="" class="sr-only" fetchpriority="high" decoding="async">
+
         <div id="hero-bg" class="absolute inset-0 bg-cover bg-center transition-all duration-1000 scale-105" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/umroh1.jpeg');"></div>
         <div class="relative z-10 text-center px-4 max-w-4xl">
             <div id="hero-content">
@@ -157,39 +219,39 @@
                 <p class="text-lg md:text-xl mb-10 opacity-90" id="hero-desc">Wujudkan mimpi ibadah Anda dengan layanan eksklusif, hotel bintang 5, dan pembimbing berpengalaman.</p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center">
                     <a href="#paket" class="px-8 py-4 gold-gradient rounded-md font-bold text-gray-900 shadow-xl hover:brightness-110 transition">LIHAT PAKET UMROH</a>
-                    <a href="#" class="px-8 py-4 border-2 border-white rounded-md font-bold hover:bg-white hover:text-gray-900 transition">HUBUNGI KAMI</a>
+                    <a href="#" class="px-8 py-4 border-2 border-white rounded-md font-bold hover:bg-white hover:text-gray-900 transition" aria-label="Hubungi kami">HUBUNGI KAMI</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="relative z-20 -mt-16 container mx-auto px-6">
+    <section class="relative z-20 -mt-16 container mx-auto px-6" aria-label="Keunggulan">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div class="bg-white p-6 rounded-xl shadow-2xl flex items-center space-x-4 border-b-4 border-yellow-500">
-                <i class="fas fa-tags text-3xl text-yellow-600"></i>
+                <i class="fas fa-tags text-3xl text-yellow-600" aria-hidden="true"></i>
                 <div><h4 class="font-bold">Harga Terbaik</h4><p class="text-xs text-gray-500">Transparan & Kompetitif</p></div>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-2xl flex items-center space-x-4 border-b-4 border-green-600">
-                <i class="fas fa-certificate text-3xl text-green-600"></i>
+                <i class="fas fa-certificate text-3xl text-green-600" aria-hidden="true"></i>
                 <div><h4 class="font-bold">Resmi & Aman</h4><p class="text-xs text-gray-500">Izin Kemenag Lengkap</p></div>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-2xl flex items-center space-x-4 border-b-4 border-blue-600">
-                <i class="fas fa-headset text-3xl text-blue-600"></i>
+                <i class="fas fa-headset text-3xl text-blue-600" aria-hidden="true"></i>
                 <div><h4 class="font-bold">24/7 Support</h4><p class="text-xs text-gray-500">Siap melayani kapanpun</p></div>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-2xl flex items-center space-x-4 border-b-4 border-purple-600">
-                <i class="fas fa-user-shield text-3xl text-purple-600"></i>
+                <i class="fas fa-user-shield text-3xl text-purple-600" aria-hidden="true"></i>
                 <div><h4 class="font-bold">Amanah</h4><p class="text-xs text-gray-500">Pelayanan dari hati</p></div>
             </div>
         </div>
     </section>
 
-    <section id="tentang" class="py-24 container mx-auto px-6">
+    <section id="tentang" class="py-24 container mx-auto px-6" aria-label="Tentang kami">
         <div class="flex flex-col md:flex-row items-center gap-12">
             <div class="w-full md:w-1/2 relative">
                 <div class="absolute -top-4 -left-4 w-24 h-24 gold-gradient rounded-full opacity-20 -z-10"></div>
-                <img src="img/umroh1.jpeg" class="rounded-2xl shadow-2xl" alt="Hello Star Travel">
-                <div class="absolute bottom-6 right-6 bg-white p-6 rounded-xl shadow-xl hidden md:block">
+                <img src="img/umroh1.jpeg" class="rounded-2xl shadow-2xl" alt="Hello Star Travel" width="1200" height="800" decoding="async">
+                <div class="absolute bottom-6 right-6 bg-white p-6 rounded-xl shadow-xl hidden md:block" aria-label="Statistik jamaah">
                     <p class="text-4xl font-bold text-green-800">10k+</p>
                     <p class="text-sm text-gray-600">Jamaah Terdaftar</p>
                 </div>
@@ -200,24 +262,24 @@
                 <p class="text-gray-600 leading-relaxed mb-6">Hello Star bukan sekadar biro perjalanan. Kami adalah mitra ibadah Anda yang berkomitmen memberikan kenyamanan maksimal agar Anda bisa fokus pada kekhusyukan ibadah di tanah suci.</p>
                 <ul class="space-y-3 mb-8">
                     <li class="flex items-center space-x-3 text-gray-700">
-                        <i class="fas fa-check-circle text-green-600"></i>
+                        <i class="fas fa-check-circle text-green-600" aria-hidden="true"></i>
                         <span>Pembimbing bersertifikasi dan berpengalaman.</span>
                     </li>
                     <li class="flex items-center space-x-3 text-gray-700">
-                        <i class="fas fa-check-circle text-green-600"></i>
+                        <i class="fas fa-check-circle text-green-600" aria-hidden="true"></i>
                         <span>Akomodasi hotel hanya berjarak jalan kaki ke Masjidil Haram.</span>
                     </li>
                     <li class="flex items-center space-x-3 text-gray-700">
-                        <i class="fas fa-check-circle text-green-600"></i>
+                        <i class="fas fa-check-circle text-green-600" aria-hidden="true"></i>
                         <span>Perlengkapan Umroh premium dan eksklusif.</span>
                     </li>
                 </ul>
-                <button class="px-8 py-3 bg-emerald-800 text-white rounded-md font-semibold hover:bg-emerald-900 transition shadow-lg">Selengkapnya Tentang Kami</button>
+                <button class="px-8 py-3 bg-emerald-800 text-white rounded-md font-semibold hover:bg-emerald-900 transition shadow-lg" type="button" aria-label="Selengkapnya tentang kami">Selengkapnya Tentang Kami</button>
             </div>
         </div>
     </section>
 
-    <section id="paket" class="py-20 bg-gray-100">
+    <section id="paket" class="py-20 bg-gray-100" aria-label="Paket umroh">
         <div class="container mx-auto px-6 text-center mb-16">
             <h2 class="text-4xl font-bold mb-4">Pilihan Paket Unggulan</h2>
             <p class="text-gray-600 max-w-2xl mx-auto">Pilih paket yang sesuai dengan kebutuhan Anda. Semua paket sudah termasuk visa, asuransi, dan perlengkapan.</p>
@@ -226,34 +288,34 @@
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="bg-white rounded-2xl overflow-hidden shadow-xl package-card flex flex-col h-full transition-all duration-300 hover:-translate-y-2">
                 <div class="relative overflow-hidden h-64">
-                    <img src="img/umroh2.jpeg" class="w-full h-full object-cover package-img transition duration-500" alt="Umroh Plus Turki">
+                    <img src="img/umroh2.jpeg" class="w-full h-full object-cover package-img transition duration-500" alt="Umroh Plus Turki" width="1200" height="800" decoding="async">
                     <div class="absolute top-4 left-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">Terlaris</div>
                 </div>
                 <div class="p-6 flex-grow">
-                    <p class="text-sm text-gray-500 mb-2"><i class="far fa-calendar-alt mr-2 text-yellow-600"></i> 14 Feb 2026 | 12 Hari</p>
+                    <p class="text-sm text-gray-500 mb-2"><i class="far fa-calendar-alt mr-2 text-yellow-600" aria-hidden="true"></i> 14 Feb 2026 | 12 Hari</p>
                     <h3 class="text-2xl font-bold mb-4 text-emerald-900">Umroh Plus Turki Premium</h3>
-                    
-                    <div class="flex border-b border-gray-100 mb-4 text-xs font-bold uppercase tracking-wider overflow-x-auto no-scrollbar">
-                        <button onclick="switchTab(this, 'p1-hotel')" class="tab-btn active px-4 py-2 whitespace-nowrap"><i class="fas fa-hotel mr-1"></i> Hotel</button>
-                        <button onclick="switchTab(this, 'p1-include')" class="tab-btn px-4 py-2 whitespace-nowrap"><i class="fas fa-check-circle mr-1"></i> Include</button>
-                        <button onclick="switchTab(this, 'p1-exclude')" class="tab-btn px-4 py-2 whitespace-nowrap"><i class="fas fa-times-circle mr-1"></i> Exclude</button>
+
+                    <div class="flex border-b border-gray-100 mb-4 text-xs font-bold uppercase tracking-wider overflow-x-auto no-scrollbar" role="tablist" aria-label="Detail paket Umroh Plus Turki Premium">
+                        <button onclick="switchTab(this, 'p1-hotel')" class="tab-btn active px-4 py-2 whitespace-nowrap" role="tab" aria-selected="true" aria-controls="p1-hotel" type="button"><i class="fas fa-hotel mr-1" aria-hidden="true"></i> Hotel</button>
+                        <button onclick="switchTab(this, 'p1-include')" class="tab-btn px-4 py-2 whitespace-nowrap" role="tab" aria-selected="false" aria-controls="p1-include" type="button"><i class="fas fa-check-circle mr-1" aria-hidden="true"></i> Include</button>
+                        <button onclick="switchTab(this, 'p1-exclude')" class="tab-btn px-4 py-2 whitespace-nowrap" role="tab" aria-selected="false" aria-controls="p1-exclude" type="button"><i class="fas fa-times-circle mr-1" aria-hidden="true"></i> Exclude</button>
                     </div>
-                    <div class="text-sm text-gray-600 mb-6 min-h-[120px]">
-                        <div id="p1-hotel" class="tab-content active space-y-1">
+                    <div class="text-sm text-gray-600 mb-6 min-h-[120px]" aria-live="polite">
+                        <div id="p1-hotel" class="tab-content active space-y-1" role="tabpanel" tabindex="0">
                             <p class="flex justify-between"><span>Makkah</span><span class="font-semibold text-gray-800">Movenpick Hajar</span></p>
                             <p class="flex justify-between"><span>Madinah</span><span class="font-semibold text-gray-800">Al Harram Hotel</span></p>
                             <p class="flex justify-between"><span>Turki</span><span class="font-semibold text-gray-800">Hilton Istanbul</span></p>
                         </div>
-                        <div id="p1-include" class="tab-content space-y-1">
-                            <p><i class="fas fa-check text-green-500 mr-2"></i> Tiket Pesawat PP (Ekonomi)</p>
-                            <p><i class="fas fa-check text-green-500 mr-2"></i> Visa Umroh & Turki</p>
-                            <p><i class="fas fa-check text-green-500 mr-2"></i> Makan 3x Menu Indonesia</p>
-                            <p><i class="fas fa-check text-green-500 mr-2"></i> Air Zam-zam 5 Liter</p>
+                        <div id="p1-include" class="tab-content space-y-1" role="tabpanel" tabindex="0">
+                            <p><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Tiket Pesawat PP (Ekonomi)</p>
+                            <p><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Visa Umroh & Turki</p>
+                            <p><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Makan 3x Menu Indonesia</p>
+                            <p><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Air Zam-zam 5 Liter</p>
                         </div>
-                        <div id="p1-exclude" class="tab-content space-y-1 text-red-500">
-                            <p><i class="fas fa-times mr-2"></i> Pembuatan Paspor</p>
-                            <p><i class="fas fa-times mr-2"></i> Keperluan Pribadi/Laundry</p>
-                            <p><i class="fas fa-times mr-2"></i> Kelebihan Bagasi</p>
+                        <div id="p1-exclude" class="tab-content space-y-1 text-red-500" role="tabpanel" tabindex="0">
+                            <p><i class="fas fa-times mr-2" aria-hidden="true"></i> Pembuatan Paspor</p>
+                            <p><i class="fas fa-times mr-2" aria-hidden="true"></i> Keperluan Pribadi/Laundry</p>
+                            <p><i class="fas fa-times mr-2" aria-hidden="true"></i> Kelebihan Bagasi</p>
                         </div>
                     </div>
                 </div>
@@ -262,8 +324,8 @@
                         <div><p class="text-xs text-gray-400">Mulai dari</p><p class="text-2xl font-bold text-emerald-800">Rp 35,9jt</p></div>
                     </div>
                     <div class="grid grid-cols-2 gap-2">
-                        <button class="py-2 bg-gray-100 rounded-lg text-sm font-bold hover:bg-gray-200">Detail</button>
-                        <button onclick="openModal()" class="py-2 gold-gradient rounded-lg text-sm font-bold text-gray-900 shadow-md">Book Now</button>
+                        <button class="py-2 bg-gray-100 rounded-lg text-sm font-bold hover:bg-gray-200" type="button" aria-label="Lihat detail Umroh Plus Turki Premium">Detail</button>
+                        <button onclick="openModal()" class="py-2 gold-gradient rounded-lg text-sm font-bold text-gray-900 shadow-md" type="button" aria-label="Pesan Umroh Plus Turki Premium">Book Now</button>
                     </div>
                 </div>
             </div>
@@ -271,29 +333,29 @@
             <div class="bg-white rounded-2xl overflow-hidden shadow-xl package-card flex flex-col h-full relative group transition-all duration-300">
                 <div class="sold-out-badge">SOLD OUT</div>
                 <div class="relative overflow-hidden h-64 grayscale">
-                    <img src="img/umroh4s.webp" class="w-full h-full object-cover" alt="Umroh Ramadhan">
+                    <img src="img/umroh4s.webp" class="w-full h-full object-cover" alt="Umroh Ramadhan" width="1200" height="800" decoding="async">
                 </div>
                 <div class="p-6 flex-grow">
-                    <p class="text-sm text-gray-500 mb-2"><i class="far fa-calendar-alt mr-2"></i> 25 Mar 2026 | 15 Hari</p>
+                    <p class="text-sm text-gray-500 mb-2"><i class="far fa-calendar-alt mr-2" aria-hidden="true"></i> 25 Mar 2026 | 15 Hari</p>
                     <h3 class="text-2xl font-bold mb-4 text-emerald-900">Umroh Full Ramadhan</h3>
-                    <div class="flex border-b border-gray-100 mb-4 text-xs font-bold uppercase tracking-wider overflow-x-auto no-scrollbar">
-                        <button onclick="switchTab(this, 'p2-hotel')" class="tab-btn active px-4 py-2 whitespace-nowrap"><i class="fas fa-hotel mr-1"></i> Hotel</button>
-                        <button onclick="switchTab(this, 'p2-include')" class="tab-btn px-4 py-2 whitespace-nowrap"><i class="fas fa-check-circle mr-1"></i> Include</button>
-                        <button onclick="switchTab(this, 'p2-exclude')" class="tab-btn px-4 py-2 whitespace-nowrap"><i class="fas fa-times-circle mr-1"></i> Exclude</button>
+                    <div class="flex border-b border-gray-100 mb-4 text-xs font-bold uppercase tracking-wider overflow-x-auto no-scrollbar" role="tablist" aria-label="Detail paket Umroh Full Ramadhan">
+                        <button onclick="switchTab(this, 'p2-hotel')" class="tab-btn active px-4 py-2 whitespace-nowrap" role="tab" aria-selected="true" aria-controls="p2-hotel" type="button"><i class="fas fa-hotel mr-1" aria-hidden="true"></i> Hotel</button>
+                        <button onclick="switchTab(this, 'p2-include')" class="tab-btn px-4 py-2 whitespace-nowrap" role="tab" aria-selected="false" aria-controls="p2-include" type="button"><i class="fas fa-check-circle mr-1" aria-hidden="true"></i> Include</button>
+                        <button onclick="switchTab(this, 'p2-exclude')" class="tab-btn px-4 py-2 whitespace-nowrap" role="tab" aria-selected="false" aria-controls="p2-exclude" type="button"><i class="fas fa-times-circle mr-1" aria-hidden="true"></i> Exclude</button>
                     </div>
-                    <div class="text-sm text-gray-600 mb-6 min-h-[120px]">
-                        <div id="p2-hotel" class="tab-content active space-y-1">
+                    <div class="text-sm text-gray-600 mb-6 min-h-[120px]" aria-live="polite">
+                        <div id="p2-hotel" class="tab-content active space-y-1" role="tabpanel" tabindex="0">
                             <p class="flex justify-between"><span>Makkah</span><span class="font-semibold">Snood Ajyad</span></p>
                             <p class="flex justify-between"><span>Madinah</span><span class="font-semibold">Concorde Al Khair</span></p>
                         </div>
-                        <div id="p2-include" class="tab-content space-y-1">
-                            <p><i class="fas fa-check text-green-500 mr-2"></i> Tiket Pesawat Saudia Airlines</p>
-                            <p><i class="fas fa-check text-green-500 mr-2"></i> Visa Umroh</p>
-                            <p><i class="fas fa-check text-green-500 mr-2"></i> Iftars & Sahur Menu Indo</p>
+                        <div id="p2-include" class="tab-content space-y-1" role="tabpanel" tabindex="0">
+                            <p><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Tiket Pesawat Saudia Airlines</p>
+                            <p><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Visa Umroh</p>
+                            <p><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Iftars & Sahur Menu Indo</p>
                         </div>
-                        <div id="p2-exclude" class="tab-content space-y-1 text-red-500">
-                            <p><i class="fas fa-times mr-2"></i> Vaksin Meningitis</p>
-                            <p><i class="fas fa-times mr-2"></i> Biaya Mahram (Jika Ada)</p>
+                        <div id="p2-exclude" class="tab-content space-y-1 text-red-500" role="tabpanel" tabindex="0">
+                            <p><i class="fas fa-times mr-2" aria-hidden="true"></i> Vaksin Meningitis</p>
+                            <p><i class="fas fa-times mr-2" aria-hidden="true"></i> Biaya Mahram (Jika Ada)</p>
                         </div>
                     </div>
                 </div>
@@ -302,37 +364,37 @@
                         <div><p class="text-xs text-gray-400">Mulai dari</p><p class="text-2xl font-bold text-gray-400">Rp 48,5jt</p></div>
                     </div>
                     <div class="grid grid-cols-2 gap-2">
-                        <button class="py-2 bg-gray-100 rounded-lg text-sm font-bold opacity-50">Detail</button>
-                        <button onclick="alert('Maaf, paket ini sudah Sold Out!')" class="py-2 bg-red-600 text-white rounded-lg text-sm font-bold shadow-md">Book Now</button>
+                        <button class="py-2 bg-gray-100 rounded-lg text-sm font-bold opacity-50" type="button" aria-label="Detail Umroh Full Ramadhan (sold out)" disabled>Detail</button>
+                        <button onclick="alert('Maaf, paket ini sudah Sold Out!')" class="py-2 bg-red-600 text-white rounded-lg text-sm font-bold shadow-md" type="button" aria-label="Paket Umroh Full Ramadhan sold out">Book Now</button>
                     </div>
                 </div>
             </div>
 
             <div class="bg-white rounded-2xl overflow-hidden shadow-xl package-card flex flex-col h-full transition-all duration-300 hover:-translate-y-2">
                 <div class="relative overflow-hidden h-64">
-                    <img src="img/umroh3s.webp" class="w-full h-full object-cover package-img transition duration-500" alt="Umroh Reguler">
+                    <img src="img/umroh3s.webp" class="w-full h-full object-cover package-img transition duration-500" alt="Umroh Reguler" width="1200" height="800" decoding="async">
                 </div>
                 <div class="p-6 flex-grow">
-                    <p class="text-sm text-gray-500 mb-2"><i class="far fa-calendar-alt mr-2 text-yellow-600"></i> 10 Jan 2026 | 9 Hari</p>
+                    <p class="text-sm text-gray-500 mb-2"><i class="far fa-calendar-alt mr-2 text-yellow-600" aria-hidden="true"></i> 10 Jan 2026 | 9 Hari</p>
                     <h3 class="text-2xl font-bold mb-4 text-emerald-900">Umroh Itikaf Ramadhan</h3>
-                    <div class="flex border-b border-gray-100 mb-4 text-xs font-bold uppercase tracking-wider overflow-x-auto no-scrollbar">
-                        <button onclick="switchTab(this, 'p3-hotel')" class="tab-btn active px-4 py-2 whitespace-nowrap"><i class="fas fa-hotel mr-1"></i> Hotel</button>
-                        <button onclick="switchTab(this, 'p3-include')" class="tab-btn px-4 py-2 whitespace-nowrap"><i class="fas fa-check-circle mr-1"></i> Include</button>
-                        <button onclick="switchTab(this, 'p3-exclude')" class="tab-btn px-4 py-2 whitespace-nowrap"><i class="fas fa-times-circle mr-1"></i> Exclude</button>
+                    <div class="flex border-b border-gray-100 mb-4 text-xs font-bold uppercase tracking-wider overflow-x-auto no-scrollbar" role="tablist" aria-label="Detail paket Umroh Itikaf Ramadhan">
+                        <button onclick="switchTab(this, 'p3-hotel')" class="tab-btn active px-4 py-2 whitespace-nowrap" role="tab" aria-selected="true" aria-controls="p3-hotel" type="button"><i class="fas fa-hotel mr-1" aria-hidden="true"></i> Hotel</button>
+                        <button onclick="switchTab(this, 'p3-include')" class="tab-btn px-4 py-2 whitespace-nowrap" role="tab" aria-selected="false" aria-controls="p3-include" type="button"><i class="fas fa-check-circle mr-1" aria-hidden="true"></i> Include</button>
+                        <button onclick="switchTab(this, 'p3-exclude')" class="tab-btn px-4 py-2 whitespace-nowrap" role="tab" aria-selected="false" aria-controls="p3-exclude" type="button"><i class="fas fa-times-circle mr-1" aria-hidden="true"></i> Exclude</button>
                     </div>
-                    <div class="text-sm text-gray-600 mb-6 min-h-[120px]">
-                        <div id="p3-hotel" class="tab-content active space-y-1">
+                    <div class="text-sm text-gray-600 mb-6 min-h-[120px]" aria-live="polite">
+                        <div id="p3-hotel" class="tab-content active space-y-1" role="tabpanel" tabindex="0">
                             <p class="flex justify-between"><span>Makkah</span><span class="font-semibold text-gray-800">Snood Ajyad</span></p>
                             <p class="flex justify-between"><span>Madinah</span><span class="font-semibold text-gray-800">Concode Alkhair</span></p>
                         </div>
-                        <div id="p3-include" class="tab-content space-y-1">
-                            <p><i class="fas fa-check text-green-500 mr-2"></i> Muthawwif Berpengalaman</p>
-                            <p><i class="fas fa-check text-green-500 mr-2"></i> Bus AC Terbaru</p>
-                            <p><i class="fas fa-check text-green-500 mr-2"></i> Perlengkapan Umroh Lengkap</p>
+                        <div id="p3-include" class="tab-content space-y-1" role="tabpanel" tabindex="0">
+                            <p><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Muthawwif Berpengalaman</p>
+                            <p><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Bus AC Terbaru</p>
+                            <p><i class="fas fa-check text-green-500 mr-2" aria-hidden="true"></i> Perlengkapan Umroh Lengkap</p>
                         </div>
-                        <div id="p3-exclude" class="tab-content space-y-1 text-red-500">
-                            <p><i class="fas fa-times mr-2"></i> Pengeluaran Pribadi</p>
-                            <p><i class="fas fa-times mr-2"></i> Tiket Domestik ke Jakarta</p>
+                        <div id="p3-exclude" class="tab-content space-y-1 text-red-500" role="tabpanel" tabindex="0">
+                            <p><i class="fas fa-times mr-2" aria-hidden="true"></i> Pengeluaran Pribadi</p>
+                            <p><i class="fas fa-times mr-2" aria-hidden="true"></i> Tiket Domestik ke Jakarta</p>
                         </div>
                     </div>
                 </div>
@@ -341,15 +403,15 @@
                         <div><p class="text-xs text-gray-400">Mulai dari</p><p class="text-2xl font-bold text-emerald-800">Rp 31,9jt</p></div>
                     </div>
                     <div class="grid grid-cols-2 gap-2">
-                        <button class="py-2 bg-gray-100 rounded-lg text-sm font-bold hover:bg-gray-200">Detail</button>
-                        <button onclick="openModal()" class="py-2 gold-gradient rounded-lg text-sm font-bold text-gray-900 shadow-md">Book Now</button>
+                        <button class="py-2 bg-gray-100 rounded-lg text-sm font-bold hover:bg-gray-200" type="button" aria-label="Lihat detail Umroh Itikaf Ramadhan">Detail</button>
+                        <button onclick="openModal()" class="py-2 gold-gradient rounded-lg text-sm font-bold text-gray-900 shadow-md" type="button" aria-label="Pesan Umroh Itikaf Ramadhan">Book Now</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="galeri" class="py-20 overflow-hidden">
+    <section id="galeri" class="py-20 overflow-hidden" aria-label="Galeri keberangkatan">
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-end mb-12">
                 <div>
@@ -357,96 +419,110 @@
                     <p class="text-gray-500">Momen indah para jamaah Hello Star di Tanah Suci.</p>
                 </div>
                 <div class="flex space-x-4">
-                    <button id="slideLeft" class="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-emerald-800 hover:bg-emerald-800 hover:text-white transition">
-                        <i class="fas fa-chevron-left"></i>
+                    <button id="slideLeft" class="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-emerald-800 hover:bg-emerald-800 hover:text-white transition" type="button" aria-label="Geser galeri ke kiri">
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i>
                     </button>
-                    <button id="slideRight" class="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-emerald-800 hover:bg-emerald-800 hover:text-white transition">
-                        <i class="fas fa-chevron-right"></i>
+                    <button id="slideRight" class="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-emerald-800 hover:bg-emerald-800 hover:text-white transition" type="button" aria-label="Geser galeri ke kanan">
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
-            <div id="slider-container" class="flex space-x-6 overflow-x-auto custom-scrollbar scroll-smooth pb-10">
+            <div id="slider-container" class="flex space-x-6 overflow-x-auto custom-scrollbar scroll-smooth pb-10" tabindex="0" aria-label="Daftar foto galeri">
                 <div class="min-w-[300px] h-80 rounded-2xl overflow-hidden shadow-lg transform transition hover:scale-105">
-                    <img src="img/galeri1.webp" class="w-full h-full object-cover" alt="Jamaah Hello Star 1">
+                    <img src="img/galeri1.webp" class="w-full h-full object-cover" alt="Jamaah Hello Star 1" width="1200" height="800" loading="lazy" decoding="async">
                 </div>
                 <div class="min-w-[300px] h-80 rounded-2xl overflow-hidden shadow-lg transform transition hover:scale-105">
-                    <img src="img/galeri2.webp" class="w-full h-full object-cover" alt="Jamaah Hello Star 2">
+                    <img src="img/galeri2.webp" class="w-full h-full object-cover" alt="Jamaah Hello Star 2" width="1200" height="800" loading="lazy" decoding="async">
                 </div>
                 <div class="min-w-[300px] h-80 rounded-2xl overflow-hidden shadow-lg transform transition hover:scale-105">
-                    <img src="img/galeri3.webp" class="w-full h-full object-cover" alt="Jamaah Hello Star 3">
+                    <img src="img/galeri3.webp" class="w-full h-full object-cover" alt="Jamaah Hello Star 3" width="1200" height="800" loading="lazy" decoding="async">
                 </div>
                 <div class="min-w-[300px] h-80 rounded-2xl overflow-hidden shadow-lg transform transition hover:scale-105">
-                    <img src="img/galeri4.webp" class="w-full h-full object-cover" alt="Jamaah Hello Star 4">
+                    <img src="img/galeri4.webp" class="w-full h-full object-cover" alt="Jamaah Hello Star 4" width="1200" height="800" loading="lazy" decoding="async">
                 </div>
                 <div class="min-w-[300px] h-80 rounded-2xl overflow-hidden shadow-lg transform transition hover:scale-105">
-                    <img src="img/galeri5.webp" class="w-full h-full object-cover" alt="Jamaah Hello Star 5">
+                    <img src="img/galeri5.webp" class="w-full h-full object-cover" alt="Jamaah Hello Star 5" width="1200" height="800" loading="lazy" decoding="async">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-emerald-900 text-white relative">
+    <section class="py-20 bg-emerald-900 text-white relative" aria-label="Testimoni">
         <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 30px 30px;"></div>
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex justify-between items-center mb-16">
                 <h2 class="text-4xl font-bold">Apa Kata Mereka?</h2>
                 <div class="flex space-x-4">
-                    <button id="testiLeft" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition">
-                        <i class="fas fa-chevron-left"></i>
+                    <button id="testiLeft" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" type="button" aria-label="Geser testimoni ke kiri">
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i>
                     </button>
-                    <button id="testiRight" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition">
-                        <i class="fas fa-chevron-right"></i>
+                    <button id="testiRight" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition" type="button" aria-label="Geser testimoni ke kanan">
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
-            <div id="testi-container" class="flex space-x-6 overflow-x-auto custom-scrollbar scroll-smooth pb-10">
+            <div id="testi-container" class="flex space-x-6 overflow-x-auto custom-scrollbar scroll-smooth pb-10" tabindex="0" aria-label="Daftar testimoni">
                 <div class="min-w-[350px] bg-white/10 p-8 rounded-2xl backdrop-blur-md border border-white/20 flex flex-col justify-between">
                     <div>
-                        <div class="flex text-yellow-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="flex text-yellow-400 mb-4 text-sm" aria-label="Rating 5 dari 5">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
                         <p class="italic mb-6">"Alhamdulillah, umroh bersama Hello Star sungguh berkesan. Hotel sangat dekat, makanan cocok, dan pembimbing sangat sabar."</p>
                     </div>
                     <div class="flex items-center space-x-4">
-                        <img src="img/testimoni1.jpeg" class="w-12 h-12 rounded-full border-2 border-yellow-400 object-cover" alt="Ahmad Subarjo">
+                        <img src="img/testimoni1.jpeg" class="w-12 h-12 rounded-full border-2 border-yellow-400 object-cover" alt="Foto H. Ahmad Subarjo" width="96" height="96" loading="lazy" decoding="async">
                         <div><p class="font-bold text-white">H. Ahmad Subarjo</p><p class="text-xs opacity-60">Jamaah Umroh 2025</p></div>
                     </div>
                 </div>
+
                 <div class="min-w-[350px] bg-white/10 p-8 rounded-2xl backdrop-blur-md border border-white/20 flex flex-col justify-between">
                     <div>
-                        <div class="flex text-yellow-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="flex text-yellow-400 mb-4 text-sm" aria-label="Rating 5 dari 5">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
                         <p class="italic mb-6">"Fasilitas bintang 5 benar-benar terasa. Proses pendaftaran hingga pulang sangat profesional dan tidak ribet. Sangat puas!"</p>
                     </div>
                     <div class="flex items-center space-x-4">
-                        <img src="img/testimoni2.jpeg" class="w-12 h-12 rounded-full border-2 border-yellow-400 object-cover" alt="Siti Aminah">
+                        <img src="img/testimoni2.jpeg" class="w-12 h-12 rounded-full border-2 border-yellow-400 object-cover" alt="Foto Siti Aminah" width="96" height="96" loading="lazy" decoding="async">
                         <div><p class="font-bold text-white">Siti Aminah</p><p class="text-xs opacity-60">Jamaah Umroh Plus Turki</p></div>
                     </div>
                 </div>
+
                 <div class="min-w-[350px] bg-white/10 p-8 rounded-2xl backdrop-blur-md border border-white/20 flex flex-col justify-between">
                     <div>
-                        <div class="flex text-yellow-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="flex text-yellow-400 mb-4 text-sm" aria-label="Rating 5 dari 5">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
                         <p class="italic mb-6">"Terima kasih Hello Star, perjalanan ibadah yang sangat nyaman bagi orang tua kami. Mutawwif sangat perhatian."</p>
                     </div>
                     <div class="flex items-center space-x-4">
-                        <img src="img/testimoni3.jpeg" class="w-12 h-12 rounded-full border-2 border-yellow-400 object-cover" alt="Budi Santoso">
+                        <img src="img/testimoni3.jpeg" class="w-12 h-12 rounded-full border-2 border-yellow-400 object-cover" alt="Foto Budi Santoso" width="96" height="96" loading="lazy" decoding="async">
                         <div><p class="font-bold text-white">Budi Santoso</p><p class="text-xs opacity-60">Wiraswasta</p></div>
                     </div>
                 </div>
+
                 <div class="min-w-[350px] bg-white/10 p-8 rounded-2xl backdrop-blur-md border border-white/20 flex flex-col justify-between">
                     <div>
-                        <div class="flex text-yellow-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="flex text-yellow-400 mb-4 text-sm" aria-label="Rating 5 dari 5">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
                         <p class="italic mb-6">"Pelayanan luar biasa, dari manasik sampai tiba di tanah suci. Semua jadwal terorganisir dengan sangat rapi."</p>
                     </div>
                     <div class="flex items-center space-x-4">
-                        <img src="img/testimoni4.jpeg" class="w-12 h-12 rounded-full border-2 border-yellow-400 object-cover" alt="Fatima Zahra">
+                        <img src="img/testimoni4.jpeg" class="w-12 h-12 rounded-full border-2 border-yellow-400 object-cover" alt="Foto Fatima Zahra" width="96" height="96" loading="lazy" decoding="async">
                         <div><p class="font-bold text-white">Fatima Zahra</p><p class="text-xs opacity-60">Ibu Rumah Tangga</p></div>
                     </div>
                 </div>
+
                 <div class="min-w-[350px] bg-white/10 p-8 rounded-2xl backdrop-blur-md border border-white/20 flex flex-col justify-between">
                     <div>
-                        <div class="flex text-yellow-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <div class="flex text-yellow-400 mb-4 text-sm" aria-label="Rating 5 dari 5">
+                            <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
                         <p class="italic mb-6">"Pilihan hotelnya juara! Benar-benar depan pelataran masjid. Sangat memudahkan untuk mengejar shalat berjamaah."</p>
                     </div>
                     <div class="flex items-center space-x-4">
-                        <img src="img/testimoni5.jpeg" class="w-12 h-12 rounded-full border-2 border-yellow-400 object-cover" alt="Hendra Wijaya">
+                        <img src="img/testimoni5.jpeg" class="w-12 h-12 rounded-full border-2 border-yellow-400 object-cover" alt="Foto Hendra Wijaya" width="96" height="96" loading="lazy" decoding="async">
                         <div><p class="font-bold text-white">Hendra Wijaya</p><p class="text-xs opacity-60">Karyawan Swasta</p></div>
                     </div>
                 </div>
@@ -454,7 +530,7 @@
         </div>
     </section>
 
-    <section class="py-24 bg-gray-50">
+    <section class="py-24 bg-gray-50" aria-label="FAQ">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <div class="lg:col-span-2">
@@ -463,7 +539,7 @@
                         <details class="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden" open>
                             <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-lg text-gray-800">
                                 <span>Apa saja dokumen yang diperlukan untuk Umroh?</span>
-                                <i class="fas fa-chevron-down group-open:rotate-180 transition"></i>
+                                <i class="fas fa-chevron-down group-open:rotate-180 transition" aria-hidden="true"></i>
                             </summary>
                             <div class="px-6 pb-6 text-gray-600 leading-relaxed">
                                 Dokumen utama meliputi Paspor dengan masa berlaku minimal 7 bulan, KTP/KK asli, Buku Nikah (bagi suami istri), dan Sertifikat Vaksin Meningitis.
@@ -472,7 +548,7 @@
                         <details class="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                             <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-lg text-gray-800">
                                 <span>Apakah harga paket sudah termasuk perlengkapan?</span>
-                                <i class="fas fa-chevron-down group-open:rotate-180 transition"></i>
+                                <i class="fas fa-chevron-down group-open:rotate-180 transition" aria-hidden="true"></i>
                             </summary>
                             <div class="px-6 pb-6 text-gray-600 leading-relaxed">
                                 Ya, harga kami sudah termasuk perlengkapan lengkap seperti Koper premium, Tas Selempang, Kain Ihram/Mukena, Bahan Seragam eksklusif, dan Buku Doa.
@@ -481,7 +557,7 @@
                         <details class="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                             <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-lg text-gray-800">
                                 <span>Bagaimana sistem pembayaran di Hello Star?</span>
-                                <i class="fas fa-chevron-down group-open:rotate-180 transition"></i>
+                                <i class="fas fa-chevron-down group-open:rotate-180 transition" aria-hidden="true"></i>
                             </summary>
                             <div class="px-6 pb-6 text-gray-600 leading-relaxed">
                                 Pembayaran bisa melalui DP (Down Payment) sebesar Rp 5-10 Juta per pax. Pelunasan dilakukan maksimal 45 hari sebelum tanggal keberangkatan.
@@ -490,7 +566,7 @@
                         <details class="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                             <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-lg text-gray-800">
                                 <span>Apakah ada batasan umur untuk berangkat?</span>
-                                <i class="fas fa-chevron-down group-open:rotate-180 transition"></i>
+                                <i class="fas fa-chevron-down group-open:rotate-180 transition" aria-hidden="true"></i>
                             </summary>
                             <div class="px-6 pb-6 text-gray-600 leading-relaxed">
                                 Tidak ada batasan umur selama jamaah dalam kondisi sehat. Untuk lansia, kami menyarankan didampingi oleh anggota keluarga demi kenyamanan ibadah.
@@ -499,7 +575,7 @@
                         <details class="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                             <summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-lg text-gray-800">
                                 <span>Jika paket batal/reschedule, bagaimana prosedurnya?</span>
-                                <i class="fas fa-chevron-down group-open:rotate-180 transition"></i>
+                                <i class="fas fa-chevron-down group-open:rotate-180 transition" aria-hidden="true"></i>
                             </summary>
                             <div class="px-6 pb-6 text-gray-600 leading-relaxed">
                                 Kebijakan pembatalan mengikuti aturan Kemenag dan provider penerbangan/hotel. Kami memberikan opsi reschedule atau refund sesuai dengan durasi waktu pembatalan dari hari H.
@@ -511,8 +587,8 @@
                     <div class="gold-gradient p-10 rounded-3xl shadow-2xl text-center text-gray-900 flex flex-col justify-center h-full">
                         <h3 class="text-3xl font-bold mb-4">Siap Beribadah?</h3>
                         <p class="mb-8 font-medium">Jangan lewatkan kesempatan beribadah di tahun 2026. Konsultasi gratis sekarang juga!</p>
-                        <button class="bg-gray-900 text-white py-4 px-6 rounded-xl font-bold shadow-xl hover:bg-emerald-800 transition">
-                            <i class="fab fa-whatsapp mr-2"></i> Chat WhatsApp
+                        <button class="bg-gray-900 text-white py-4 px-6 rounded-xl font-bold shadow-xl hover:bg-emerald-800 transition" type="button" aria-label="Chat WhatsApp">
+                            <i class="fab fa-whatsapp mr-2" aria-hidden="true"></i> Chat WhatsApp
                         </button>
                         <p class="mt-4 text-xs opacity-70 italic font-semibold">Tersisa 5 Kursi untuk Februari!</p>
                     </div>
@@ -521,11 +597,11 @@
         </div>
     </section>
 
-    <footer class="bg-emerald-900 text-white pt-20 pb-10 border-t border-emerald-800">
+    <footer class="bg-emerald-900 text-white pt-20 pb-10 border-t border-emerald-800" aria-label="Footer">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
             <div>
-                <div class="flex items-center justify-center md:justify-start space-x-2 mb-6">
-                    <div class="w-8 h-8 gold-gradient rounded-full flex items-center justify-center"><i class="fas fa-star text-white text-xs"></i></div>
+                <div class="flex items-center justify-center md:justify-start space-x-2 mb-6" aria-label="Logo Hello Star">
+                    <div class="w-8 h-8 gold-gradient rounded-full flex items-center justify-center" aria-hidden="true"><i class="fas fa-star text-white text-xs" aria-hidden="true"></i></div>
                     <span class="text-2xl font-bold tracking-tighter">HELLO <span class="text-yellow-400">STAR</span></span>
                 </div>
                 <p class="text-gray-300 text-sm leading-relaxed">Penyelenggara Perjalanan Ibadah Umroh (PPIU) Resmi. Melayani sepenuh hati dengan standar layanan premium bintang 5.</p>
@@ -541,16 +617,20 @@
             <div>
                 <h4 class="text-lg font-bold mb-6">Informasi</h4>
                 <ul class="space-y-3 text-gray-300 text-sm">
-                    <li>+62 812 3456 7890</li>
-                    <li>info@hellostar.com</li>
-                    <li>Jakarta, Indonesia</li>
+                    <li aria-label="Telepon">+62 812 3456 7890</li>
+                    <li aria-label="Email">info@hellostar.com</li>
+                    <li aria-label="Alamat">Jakarta, Indonesia</li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-lg font-bold mb-6">Ikuti Kami</h4>
                 <div class="flex justify-center md:justify-start space-x-4">
-                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition" aria-label="Instagram">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition" aria-label="YouTube">
+                        <i class="fab fa-youtube" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -559,27 +639,29 @@
         </div>
     </footer>
 
-    <div id="bookingModal" class="fixed inset-0 bg-black/80 z-[60] hidden items-center justify-center p-4">
+    <div id="bookingModal" class="fixed inset-0 bg-black/80 z-[60] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="bg-white rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-2xl z-10"><i class="fas fa-times"></i></button>
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-2xl z-10" type="button" aria-label="Tutup modal">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
             <div class="flex flex-col md:flex-row">
                 <div class="md:w-1/3 gold-gradient p-8 text-gray-900 flex flex-col justify-center">
-                    <h3 class="text-2xl font-bold mb-4">Reservasi Kursi</h3>
+                    <h3 class="text-2xl font-bold mb-4" id="modalTitle">Reservasi Kursi</h3>
                     <p class="text-sm">Silakan lengkapi formulir pendaftaran Umroh.</p>
                 </div>
                 <div class="md:w-2/3 p-8 bg-white">
                     <form class="space-y-4">
-                        <input type="text" class="w-full border-b-2 border-gray-200 py-2 focus:border-yellow-500 outline-none transition" placeholder="Nama Sesuai Paspor">
+                        <input type="text" class="w-full border-b-2 border-gray-200 py-2 focus:border-yellow-500 outline-none transition" placeholder="Nama Sesuai Paspor" aria-label="Nama sesuai paspor">
                         <div class="grid grid-cols-2 gap-4">
-                            <input type="tel" class="w-full border-b-2 border-gray-200 py-2 focus:border-yellow-500 outline-none transition" placeholder="WhatsApp">
-                            <input type="number" class="w-full border-b-2 border-gray-200 py-2 focus:border-yellow-500 outline-none transition" placeholder="Jumlah Pax">
+                            <input type="tel" class="w-full border-b-2 border-gray-200 py-2 focus:border-yellow-500 outline-none transition" placeholder="WhatsApp" aria-label="Nomor WhatsApp">
+                            <input type="number" class="w-full border-b-2 border-gray-200 py-2 focus:border-yellow-500 outline-none transition" placeholder="Jumlah Pax" aria-label="Jumlah pax">
                         </div>
-                        <select class="w-full border-b-2 border-gray-200 py-2 focus:border-yellow-500 outline-none transition">
+                        <select class="w-full border-b-2 border-gray-200 py-2 focus:border-yellow-500 outline-none transition" aria-label="Pilih paket">
                             <option>Pilih Paket</option>
                             <option>Umroh Plus Turki Premium</option>
                             <option>Umroh Itikaf Ramadhan</option>
                         </select>
-                        <button type="button" class="w-full py-4 gold-gradient rounded-xl font-bold text-gray-900 shadow-xl mt-6">Kirim Sekarang</button>
+                        <button type="button" class="w-full py-4 gold-gradient rounded-xl font-bold text-gray-900 shadow-xl mt-6" aria-label="Kirim pendaftaran">Kirim Sekarang</button>
                     </form>
                 </div>
             </div>
@@ -587,16 +669,24 @@
     </div>
 
     <script>
-        // Hamburger Menu Toggle
+        // Hamburger Menu Toggle (Accessibility: aria-expanded)
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('open');
-            const icon = hamburger.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
+        if (hamburger && mobileMenu) {
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+                const isOpen = mobileMenu.classList.contains('open');
+                hamburger.setAttribute('aria-expanded', String(isOpen));
+                hamburger.setAttribute('aria-label', isOpen ? 'Tutup menu' : 'Buka menu');
+
+                const icon = hamburger.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                }
+            });
+        }
 
         const heroData = [
             { bg: "img/umroh1.jpeg", title: "Perjalanan Suci Ke Baitullah Bersama Hello Star", desc: "Wujudkan mimpi ibadah Anda dengan layanan eksklusif dan hotel bintang 5." },
@@ -604,34 +694,65 @@
         ];
 
         let currentSlide = 0;
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % heroData.length;
-            const bg = document.getElementById('hero-bg');
-            const cont = document.getElementById('hero-content');
-            if(bg && cont) {
-                bg.style.opacity = '0';
-                setTimeout(() => {
-                    bg.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${heroData[currentSlide].bg}')`;
-                    bg.style.opacity = '1';
-                    cont.classList.remove('text-animate-up');
-                    void cont.offsetWidth; 
-                    cont.classList.add('text-animate-up');
-                    document.getElementById('hero-title').textContent = heroData[currentSlide].title;
-                    document.getElementById('hero-desc').textContent = heroData[currentSlide].desc;
-                }, 500);
-            }
-        }, 4000);
+        let heroIntervalId = null;
+
+        function startHeroRotation() {
+            if (heroIntervalId) return;
+            heroIntervalId = setInterval(() => {
+                currentSlide = (currentSlide + 1) % heroData.length;
+                const bg = document.getElementById('hero-bg');
+                const cont = document.getElementById('hero-content');
+                if (bg && cont) {
+                    bg.style.opacity = '0';
+                    setTimeout(() => {
+                        bg.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${heroData[currentSlide].bg}')`;
+                        bg.style.opacity = '1';
+                        cont.classList.remove('text-animate-up');
+                        void cont.offsetWidth;
+                        cont.classList.add('text-animate-up');
+                        const titleEl = document.getElementById('hero-title');
+                        const descEl = document.getElementById('hero-desc');
+                        if (titleEl) titleEl.textContent = heroData[currentSlide].title;
+                        if (descEl) descEl.textContent = heroData[currentSlide].desc;
+                    }, 500);
+                }
+            }, 4000);
+        }
+
+        function stopHeroRotation() {
+            if (!heroIntervalId) return;
+            clearInterval(heroIntervalId);
+            heroIntervalId = null;
+        }
+
+        // Pause rotation when tab not visible (performance)
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) stopHeroRotation();
+            else startHeroRotation();
+        });
+
+        startHeroRotation();
 
         function switchTab(btn, tabId) {
             const container = btn.parentElement.parentElement;
-            container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+
+            // Update visual + aria-selected for tabs
+            container.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
             container.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
             btn.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+
+            const panel = document.getElementById(tabId);
+            if (panel) panel.classList.add('active');
         }
 
         window.onscroll = () => {
             const nav = document.getElementById('navbar');
+            if (!nav) return;
             if (window.scrollY > 50) {
                 nav.classList.add('bg-emerald-950', 'py-2');
                 nav.classList.remove('glass-nav', 'py-4');
@@ -640,8 +761,45 @@
                 nav.classList.remove('bg-emerald-950', 'py-2');
             }
         };
+
+        // Modal functions (kept compatible with your existing onclick)
+        function openModal() {
+            const modal = document.getElementById('bookingModal');
+            if (modal) {
+                modal.classList.add('modal-active');
+                modal.classList.remove('hidden');
+                // focus close button for accessibility
+                const closeBtn = modal.querySelector('button[aria-label="Tutup modal"]');
+                if (closeBtn) closeBtn.focus();
+            }
+        }
+        function closeModal() {
+            const modal = document.getElementById('bookingModal');
+            if (modal) {
+                modal.classList.remove('modal-active');
+                modal.classList.add('hidden');
+            }
+        }
+
+        // Gallery slide buttons (if you later implement scrolling)
+        const slider = document.getElementById('slider-container');
+        const slideLeft = document.getElementById('slideLeft');
+        const slideRight = document.getElementById('slideRight');
+
+        if (slider && slideLeft && slideRight) {
+            slideLeft.addEventListener('click', () => slider.scrollBy({ left: -320, behavior: 'smooth' }));
+            slideRight.addEventListener('click', () => slider.scrollBy({ left: 320, behavior: 'smooth' }));
+        }
+
+        // Testimonial slide buttons
+        const testi = document.getElementById('testi-container');
+        const testiLeft = document.getElementById('testiLeft');
+        const testiRight = document.getElementById('testiRight');
+
+        if (testi && testiLeft && testiRight) {
+            testiLeft.addEventListener('click', () => testi.scrollBy({ left: -380, behavior: 'smooth' }));
+            testiRight.addEventListener('click', () => testi.scrollBy({ left: 380, behavior: 'smooth' }));
+        }
     </script>
 </body>
-
 </html>
-
