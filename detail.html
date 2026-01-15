@@ -386,5 +386,147 @@
             }
         };
     </script>
+      <!-- Floating WA + Back To Top (Paste sebelum </body>) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  .hs-float-wrap{
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+    pointer-events: none; /* biar hanya tombol yang bisa diklik */
+  }
+
+  .hs-float-btn{
+    pointer-events: auto;
+    width: 54px;
+    height: 54px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,.22);
+    border: 2px solid rgba(255,255,255,.35);
+    transform: translateZ(0);
+    transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease, visibility .2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .hs-float-btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(0,0,0,.28);
+  }
+
+  /* WhatsApp: kontras hijau terang + ring emas */
+  .hs-wa{
+    background: radial-gradient(circle at 30% 30%, #34d399 0%, #22c55e 45%, #16a34a 100%);
+    border-color: rgba(250, 204, 21, .9);
+  }
+  .hs-wa i{ color: #fff; font-size: 24px; }
+
+  /* Back to top: emerald gelap + gold accent */
+  .hs-top{
+    background: radial-gradient(circle at 30% 30%, #0b3b2f 0%, #064e3b 45%, #022c22 100%);
+    border-color: rgba(250, 204, 21, .95);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+  }
+  .hs-top.show{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .hs-top i{ color: #facc15; font-size: 20px; }
+
+  /* Tooltip kecil (opsional) */
+  .hs-tip{
+    position: absolute;
+    right: 64px;
+    white-space: nowrap;
+    background: rgba(2,44,34,.92);
+    color: #fff;
+    font-size: 12px;
+    padding: 7px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(250,204,21,.35);
+    opacity: 0;
+    transform: translateY(2px);
+    transition: opacity .18s ease, transform .18s ease;
+    pointer-events: none;
+  }
+  .hs-float-btn:hover .hs-tip{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Bubble ping (kontras) */
+  .hs-ping{
+    position:absolute;
+    inset:-6px;
+    border-radius:999px;
+    border: 2px solid rgba(250,204,21,.35);
+    animation: hsPing 1.8s ease-out infinite;
+  }
+  @keyframes hsPing{
+    0%{ transform: scale(.92); opacity:.0; }
+    15%{ opacity:.7; }
+    100%{ transform: scale(1.25); opacity:0; }
+  }
+
+  @media (max-width: 480px){
+    .hs-float-btn{ width: 52px; height: 52px; }
+    .hs-tip{ display:none; }
+    .hs-float-wrap{ right: 14px; bottom: 14px; }
+  }
+</style>
+
+<div class="hs-float-wrap" aria-label="Floating actions">
+  <!-- Back to Top -->
+  <button id="hsTopBtn" class="hs-float-btn hs-top" type="button" aria-label="Kembali ke atas">
+    <span class="hs-tip">Ke Atas</span>
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </button>
+   <!-- WhatsApp -->
+  <a id="hsWaBtn" class="hs-float-btn hs-wa" href="#" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+    <span class="hs-ping" aria-hidden="true"></span>
+    <span class="hs-tip">Konsultasi WhatsApp</span>
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+  </a>
+</div>
+
+<script>
+  (function(){
+    // ====== SET WA NUMBER HERE ======
+    const WA_NUMBER = "6281234567890"; // ganti ini (tanpa +)
+    const DEFAULT_TEXT = "Halo Hello Star, saya mau konsultasi Umroh. Bisa dibantu?";
+
+    const waBtn = document.getElementById("hsWaBtn");
+    const topBtn = document.getElementById("hsTopBtn");
+
+    // Build WA link (auto include page url)
+    const pageUrl = window.location.href;
+    const text = encodeURIComponent(DEFAULT_TEXT + " \n\nLink halaman: " + pageUrl);
+    waBtn.href = "https://wa.me/" + WA_NUMBER + "?text=" + text;
+
+    // Back to top show/hide
+    const toggleTop = () => {
+      if(window.scrollY > 420) topBtn.classList.add("show");
+      else topBtn.classList.remove("show");
+    };
+
+    window.addEventListener("scroll", toggleTop, { passive: true });
+    toggleTop();
+
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  })();
+</script>
 </body>
 </html>

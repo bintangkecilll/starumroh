@@ -1,245 +1,1247 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Detail Artikel - Hello Star</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        .gold-gradient { background: linear-gradient(135deg, #D4AF37 0%, #F9E498 50%, #B8860B 100%); }
-        .nav-solid { background: #064e3b; }
-        .sidebar-box { background: #f9fafb; border: 1px solid #e5e7eb; }
-        article h2 { @apply text-2xl font-bold text-emerald-950 mt-10 mb-4 border-l-4 border-yellow-500 pl-4; }
-        article h3 { @apply text-xl font-bold text-emerald-800 mt-6 mb-3; }
-        article p { @apply text-gray-700 leading-relaxed text-lg mb-6 text-justify; }
-        article blockquote { @apply border-l-4 border-emerald-800 pl-6 italic text-xl text-emerald-900 my-10 font-serif bg-emerald-50 py-6 rounded-r-xl; }
-        .promo-gif { @apply w-full rounded-2xl border-4 border-yellow-400 my-8 shadow-xl; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Detail Artikel - Hello Star</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    .gold-gradient { background: linear-gradient(135deg, #D4AF37 0%, #F9E498 50%, #B8860B 100%); }
+    .nav-solid { background: #064e3b; border-bottom: 1px solid rgba(255,255,255,0.12); }
+
+    /* Article typography (no @apply, pure CSS) */
+    #art-body h2{
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #022c22;
+      margin-top: 2.2rem;
+      margin-bottom: 0.8rem;
+      border-left: 5px solid #f59e0b;
+      padding-left: 0.9rem;
+      line-height: 1.2;
+    }
+    #art-body h3{
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #065f46;
+      margin-top: 1.4rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.25;
+    }
+    #art-body p{
+      color: #374151;
+      font-size: 1.05rem;
+      line-height: 1.95rem;
+      margin-bottom: 1.1rem;
+      text-align: justify;
+    }
+    #art-body ul{
+      margin: 0.5rem 0 1.2rem 1.2rem;
+      color: #374151;
+    }
+    #art-body li{
+      margin: 0.35rem 0;
+      list-style: disc;
+    }
+    #art-body blockquote{
+      border-left: 5px solid #065f46;
+      background: #ecfdf5;
+      padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+      border-radius: 0 1rem 1rem 0;
+      margin: 2rem 0;
+      font-style: italic;
+      color: #064e3b;
+      font-size: 1.1rem;
+      line-height: 1.9rem;
+    }
+    .promo-gif{
+      width: 100%;
+      border-radius: 1.25rem;
+      border: 4px solid #facc15;
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+      margin: 1.4rem 0;
+    }
+    .img-caption{
+      text-align: center;
+      font-size: .8rem;
+      color: #9ca3af;
+      font-style: italic;
+      margin-top: .65rem;
+    }
+
+    /* TOC collapse animation */
+    #toc-list{ transition: all .25s ease; }
+    .toc-hidden{ display:none; }
+
+    /* Soft cards */
+    .soft-card{
+      background: rgba(255,255,255,.9);
+      border: 1px solid rgba(229,231,235,.9);
+      box-shadow: 0 10px 30px rgba(2,44,34,0.08);
+      backdrop-filter: blur(8px);
+    }
+  </style>
 </head>
+
 <body class="bg-white">
 
-    <nav class="fixed w-full z-50 glass-nav py-4 transition-all duration-300" id="navbar">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 gold-gradient rounded-full flex items-center justify-center shadow-lg">
-                        <i class="fas fa-star text-white"></i>
-                    </div>
-                    <span class="text-2xl font-bold tracking-tighter text-white">HELLO <span class="text-yellow-400">STAR</span></span>
-                </div>
-                
-                <div class="hidden md:flex space-x-8 text-white font-medium">
-                    <a href="index.html" class="hover:text-yellow-400 transition">Beranda</a>
-                    <a href="paket.html" class="hover:text-yellow-400 transition">Paket Umroh</a>
-                    <a href="about.html" class="hover:text-yellow-400 transition">Tentang Kami</a>
-                    <a href="galeri.html" class="hover:text-yellow-400 transition">Galeri</a>
-                    <a href="blog.html" class="hover:text-yellow-400 transition">Blog</a>
-                </div>
-
-                <div class="flex items-center space-x-4">
-                    <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 md:px-6 py-2 rounded-full font-bold shadow-lg transition transform hover:scale-105 flex items-center">
-                        <i class="fab fa-whatsapp md:mr-2 text-xl md:text-base"></i> 
-                        <span class="hidden md:inline">Konsultasi</span>
-                    </button>
-
-                    <button id="hamburger" class="text-white text-2xl md:hidden focus:outline-none">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div id="mobile-menu" class="md:hidden flex flex-col space-y-4 pt-4 text-white font-medium">
-                <a href="index.html" class="hover:text-yellow-400 transition">Beranda</a>
-                <a href="paket.html" class="hover:text-yellow-400 transition">Paket Umroh</a>
-                <a href="about.html" class="hover:text-yellow-400 transition">Tentang Kami</a>
-                <a href="galeri.html" class="hover:text-yellow-400 transition">Galeri</a>
-                <a href="blog.html" class="hover:text-yellow-400 transition">Blog</a>
-            </div>
-        </div>
-    </nav>
-
-    <main class="container mx-auto px-6 pt-32 pb-20">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            
-            <div class="lg:col-span-8">
-                <h1 id="art-h1" class="text-3xl md:text-5xl font-bold text-emerald-950 mb-8 leading-tight"></h1>
-                
-                <figure class="mb-10">
-                    <img id="art-img" src="" class="w-full h-[450px] object-cover rounded-3xl shadow-xl">
-                    <figcaption id="art-img-cap" class="text-center text-sm text-gray-400 mt-4 italic"></figcaption>
-                </figure>
-
-                <article id="art-body" class="prose max-w-none">
-                    </article>
-
-                <div class="mt-16 bg-gray-50 p-8 rounded-3xl border border-gray-100">
-                    <h2 class="text-2xl font-bold text-emerald-950 mb-6">Pertanyaan Umum (FAQ)</h2>
-                    <div id="art-faq" class="space-y-6"></div>
-                    <div class="mt-12 pt-8 border-t border-gray-200">
-                        <h2 class="text-2xl font-bold text-emerald-950 mb-4 text-center">Kesimpulan</h2>
-                        <p id="art-conclusion" class="italic text-gray-600 text-center"></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lg:col-span-4">
-                <div class="sticky top-24 space-y-8">
-                    <div class="sidebar-box p-6 rounded-2xl">
-                        <div class="flex justify-between items-center mb-4 pb-2 border-b">
-                            <h4 class="font-bold text-emerald-950 text-xs tracking-widest uppercase">Daftar Isi</h4>
-                            <button onclick="toggleTOC()" class="text-emerald-800 text-sm"><i id="toc-icon" class="fas fa-chevron-down"></i></button>
-                        </div>
-                        <div id="toc-list" class="space-y-3 text-sm text-gray-600"></div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border">
-                        <h4 class="font-bold text-xs uppercase tracking-widest mb-4 text-gray-400">Bagikan Artikel</h4>
-                        <div class="flex space-x-2">
-                            <a id="share-wa" href="#" target="_blank" class="flex-1 p-3 bg-green-500 text-white rounded-xl text-center"><i class="fab fa-whatsapp"></i></a>
-                            <a id="share-fb" href="#" target="_blank" class="flex-1 p-3 bg-blue-600 text-white rounded-xl text-center"><i class="fab fa-facebook-f"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="bg-emerald-950 p-6 rounded-2xl text-white">
-                        <h4 class="font-bold text-xs uppercase tracking-widest mb-6 text-yellow-400">Baca Juga</h4>
-                        <div id="side-related" class="space-y-6"></div>
-                    </div>
-
-                    <div class="bg-gray-100 p-6 rounded-2xl flex items-center space-x-4 border border-gray-200">
-                        <img src="https://i.pravatar.cc/100?u=hellostar" class="w-16 h-16 rounded-full border-2 border-white shadow">
-                        <div>
-                            <h4 class="font-bold text-emerald-950">Tim Redaksi</h4>
-                            <p class="text-xs text-gray-500">Expert Hello Star Travel</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <nav class="fixed w-full z-50 py-4 transition-all duration-300" id="navbar">
+    <div class="container mx-auto px-6">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+          <div class="w-10 h-10 gold-gradient rounded-full flex items-center justify-center shadow-lg">
+            <i class="fas fa-star text-white"></i>
+          </div>
+          <span class="text-2xl font-bold tracking-tighter text-white">HELLO <span class="text-yellow-400">STAR</span></span>
         </div>
 
-        <div class="mt-20 pt-10 border-t">
-            <h3 class="text-3xl font-bold text-emerald-950 mb-10 text-center">3 Artikel Rekomendasi</h3>
-            <div id="bottom-related" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+        <div class="hidden md:flex space-x-8 text-white font-medium">
+          <a href="index.html" class="hover:text-yellow-400 transition">Beranda</a>
+          <a href="paket.html" class="hover:text-yellow-400 transition">Paket Umroh</a>
+          <a href="about.html" class="hover:text-yellow-400 transition">Tentang Kami</a>
+          <a href="galeri.html" class="hover:text-yellow-400 transition">Galeri</a>
+          <a href="blog.html" class="hover:text-yellow-400 transition">Blog</a>
         </div>
-    </main>
 
-    <footer class="bg-emerald-900 text-white pt-20 pb-10 border-t border-emerald-800">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+        <div class="flex items-center space-x-4">
+          <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 md:px-6 py-2 rounded-full font-bold shadow-lg transition transform hover:scale-105 flex items-center">
+            <i class="fab fa-whatsapp md:mr-2 text-xl md:text-base"></i>
+            <span class="hidden md:inline">Konsultasi</span>
+          </button>
+
+          <button id="hamburger" class="text-white text-2xl md:hidden focus:outline-none">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="md:hidden flex flex-col space-y-4 pt-4 text-white font-medium">
+        <a href="index.html" class="hover:text-yellow-400 transition">Beranda</a>
+        <a href="paket.html" class="hover:text-yellow-400 transition">Paket Umroh</a>
+        <a href="about.html" class="hover:text-yellow-400 transition">Tentang Kami</a>
+        <a href="galeri.html" class="hover:text-yellow-400 transition">Galeri</a>
+        <a href="blog.html" class="hover:text-yellow-400 transition">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-6 pt-32 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+      <!-- LEFT -->
+      <div class="lg:col-span-8">
+        <div class="mb-6">
+          <a href="blog.html" class="inline-flex items-center gap-2 text-emerald-900 font-bold hover:text-yellow-600 transition">
+            <i class="fas fa-arrow-left"></i> Kembali ke Blog
+          </a>
+        </div>
+
+        <header class="relative overflow-hidden rounded-3xl border border-gray-200 shadow-sm bg-gradient-to-b from-emerald-950 to-emerald-900 text-white">
+          <div class="absolute inset-0 opacity-25">
+            <img id="art-hero-bg" src="" class="w-full h-full object-cover" alt="cover">
+          </div>
+          <div class="relative p-8 md:p-10">
+            <p id="art-meta" class="text-white/80 text-xs tracking-widest uppercase mb-3"></p>
+            <h1 id="art-h1" class="text-3xl md:text-5xl font-bold leading-tight"></h1>
+
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="bg-white/10 border border-white/15 text-white text-xs px-3 py-1 rounded-full">
+                <i class="fas fa-book-open mr-2"></i>Artikel Edukasi
+              </span>
+              <span id="art-tag" class="bg-white/10 border border-white/15 text-white text-xs px-3 py-1 rounded-full"></span>
+            </div>
+          </div>
+        </header>
+
+        <figure class="mt-10">
+          <img id="art-img" src="" class="w-full h-[420px] object-cover rounded-3xl shadow-xl border border-gray-200" alt="Gambar utama artikel">
+          <figcaption id="art-img-cap" class="text-center text-sm text-gray-400 mt-4 italic"></figcaption>
+        </figure>
+
+        <!-- Article Body -->
+        <article id="art-body" class="mt-8">
+        </article>
+
+        <!-- FAQ + Kesimpulan -->
+        <div class="mt-16 soft-card p-8 md:p-10 rounded-3xl">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-bold text-emerald-950">Pertanyaan Umum (FAQ)</h2>
+            <span class="text-xs font-bold text-emerald-900 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
+              <i class="fas fa-circle-question mr-2"></i>Ringkas & Praktis
+            </span>
+          </div>
+          <div id="art-faq" class="space-y-6"></div>
+
+          <div class="mt-10 pt-8 border-t border-gray-200">
+            <h2 class="text-2xl font-bold text-emerald-950 mb-3 text-center">Kesimpulan</h2>
+            <p id="art-conclusion" class="italic text-gray-600 text-center text-lg leading-relaxed"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="lg:col-span-4">
+        <div class="sticky top-24 space-y-8">
+
+          <!-- TOC -->
+          <div class="soft-card p-6 rounded-2xl">
+            <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-200">
+              <h4 class="font-bold text-emerald-950 text-xs tracking-widest uppercase">Daftar Isi</h4>
+              <button onclick="toggleTOC()" class="text-emerald-800 text-sm font-bold flex items-center gap-2">
+                <span>Toggle</span>
+                <i id="toc-icon" class="fas fa-chevron-down transition"></i>
+              </button>
+            </div>
+            <div id="toc-list" class="space-y-2 text-sm text-gray-600"></div>
+          </div>
+
+          <!-- Share -->
+          <div class="soft-card p-6 rounded-2xl">
+            <h4 class="font-bold text-xs uppercase tracking-widest mb-4 text-gray-400">Bagikan Artikel</h4>
+            <div class="grid grid-cols-3 gap-2">
+              <a id="share-wa" href="#" target="_blank" class="p-3 bg-green-500 text-white rounded-xl text-center hover:opacity-90 transition" title="Share ke WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+              <a id="share-fb" href="#" target="_blank" class="p-3 bg-blue-600 text-white rounded-xl text-center hover:opacity-90 transition" title="Share ke Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a id="share-x" href="#" target="_blank" class="p-3 bg-black text-white rounded-xl text-center hover:opacity-90 transition" title="Share ke X/Twitter">
+                <i class="fab fa-x-twitter"></i>
+              </a>
+            </div>
+            <p class="text-xs text-gray-500 mt-4 leading-relaxed">
+              Bagikan artikel ini agar keluarga & sahabat mendapat panduan ibadah yang lebih siap dan nyaman.
+            </p>
+          </div>
+
+          <!-- Baca Juga -->
+          <div class="bg-emerald-950 p-6 rounded-2xl text-white shadow-lg">
+            <h4 class="font-bold text-xs uppercase tracking-widest mb-6 text-yellow-400">Baca Juga</h4>
+            <div id="side-related" class="space-y-6"></div>
+          </div>
+
+          <!-- Author -->
+          <div class="soft-card p-6 rounded-2xl flex items-center space-x-4">
+            <img id="author-avatar" src="https://i.pravatar.cc/100?u=hellostar" class="w-16 h-16 rounded-full border-2 border-white shadow" alt="Profil penulis">
             <div>
-                <div class="flex items-center justify-center md:justify-start space-x-2 mb-6">
-                    <div class="w-8 h-8 gold-gradient rounded-full flex items-center justify-center"><i class="fas fa-star text-white text-xs"></i></div>
-                    <span class="text-2xl font-bold tracking-tighter">HELLO <span class="text-yellow-400">STAR</span></span>
-                </div>
-                <p class="text-gray-300 text-sm leading-relaxed">Penyelenggara Perjalanan Ibadah Umroh (PPIU) Resmi. Melayani sepenuh hati dengan standar layanan premium bintang 5.</p>
+              <h4 id="author-name" class="font-bold text-emerald-950">Tim Redaksi</h4>
+              <p id="author-role" class="text-xs text-gray-500">Expert Hello Star Travel</p>
+              <p id="author-bio" class="text-xs text-gray-500 mt-1 leading-relaxed"></p>
             </div>
-            <div>
-                <h4 class="text-lg font-bold mb-6">Navigasi</h4>
-                <ul class="space-y-3 text-gray-300 text-sm">
-                    <li><a href="index.html" class="hover:text-yellow-400">Beranda</a></li>
-                    <li><a href="paket.html" class="hover:text-yellow-400">Paket Umroh</a></li>
-                    <li><a href="about.html" class="hover:text-yellow-400">Tentang Kami</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-lg font-bold mb-6">Informasi</h4>
-                <ul class="space-y-3 text-gray-300 text-sm">
-                    <li>+62 812 3456 7890</li>
-                    <li>info@hellostar.com</li>
-                    <li>Jakarta, Indonesia</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-lg font-bold mb-6">Ikuti Kami</h4>
-                <div class="flex justify-center md:justify-start space-x-4">
-                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
+          </div>
+
         </div>
-        <div class="border-t border-emerald-800 mt-16 pt-8 text-center text-gray-400 text-xs">
-            © 2026 HELLO STAR Travel. All Rights Reserved.
+      </div>
+    </div>
+
+    <!-- Bottom related -->
+    <div class="mt-20 pt-10 border-t">
+      <h3 class="text-3xl font-bold text-emerald-950 mb-10 text-center">3 Artikel Rekomendasi</h3>
+      <div id="bottom-related" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+    </div>
+  </main>
+
+  <footer class="bg-emerald-900 text-white pt-20 pb-10 border-t border-emerald-800">
+    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+      <div>
+        <div class="flex items-center justify-center md:justify-start space-x-2 mb-6">
+          <div class="w-8 h-8 gold-gradient rounded-full flex items-center justify-center"><i class="fas fa-star text-white text-xs"></i></div>
+          <span class="text-2xl font-bold tracking-tighter">HELLO <span class="text-yellow-400">STAR</span></span>
         </div>
-    </footer>
+        <p class="text-gray-300 text-sm leading-relaxed">Penyelenggara Perjalanan Ibadah Umroh (PPIU) Resmi. Melayani sepenuh hati dengan standar layanan premium bintang 5.</p>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold mb-6">Navigasi</h4>
+        <ul class="space-y-3 text-gray-300 text-sm">
+          <li><a href="index.html" class="hover:text-yellow-400">Beranda</a></li>
+          <li><a href="paket.html" class="hover:text-yellow-400">Paket Umroh</a></li>
+          <li><a href="about.html" class="hover:text-yellow-400">Tentang Kami</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold mb-6">Informasi</h4>
+        <ul class="space-y-3 text-gray-300 text-sm">
+          <li>+62 812 3456 7890</li>
+          <li>info@hellostar.com</li>
+          <li>Jakarta, Indonesia</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold mb-6">Ikuti Kami</h4>
+        <div class="flex justify-center md:justify-start space-x-4">
+          <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-emerald-800 mt-16 pt-8 text-center text-gray-400 text-xs">
+      © 2026 HELLO STAR Travel. All Rights Reserved.
+    </div>
+  </footer>
 
-    <script>
-        const database = {
-            "1": {
-                title: "Persiapan Fisik Sebelum Umroh 2026", img: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa", imgDesc: "Ilustrasi persiapan fisik jamaah sebelum keberangkatan.",
-                content: `
-                    <p>Ibadah Umroh menuntut fisik yang sangat prima. Bayangkan Anda harus berjalan mengelilingi Ka'bah sebanyak tujuh kali (Tawaf) dan berlari kecil di jalur Sai sejauh kurang lebih 3.5 kilometer. Tanpa latihan, kaki Anda akan mudah kram dan stamina menurun drastis di tengah ibadah.</p>
-                    <blockquote>"Kesehatan adalah nikmat yang sering dilupakan manusia hingga mereka jatuh sakit." - Pesan Hikmah Ibadah.</blockquote>
-                    <h2>1. Latihan Jalan Kaki Rutin</h2>
-                    <p>Mulailah berjalan kaki minimal 30-45 menit setiap pagi sebulan sebelum berangkat. Ini membantu melenturkan otot kaki dan meningkatkan daya tahan jantung. Gunakan sepatu olahraga yang nyaman dan empuk untuk menghindari cedera dini sebelum hari keberangkatan tiba.</p>
-                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKVUn7iM8FMEU24/giphy.gif" class="promo-gif">
-                    <h2>2. Menjaga Pola Makan dan Nutrisi</h2>
-                    <p>Perbanyak konsumsi sayur, buah, dan madu. Hindari makanan yang terlalu berminyak atau pedas yang bisa memicu radang tenggorokan. Mengingat cuaca di Arab Saudi yang panas dan kering, tubuh Anda membutuhkan cadangan nutrisi yang cukup agar tidak mudah terkena flu atau demam saat tiba di lokasi.</p>
-                    <img src="img/umroh1.jpeg" class="w-full rounded-2xl my-6 shadow-md"><p class="text-center text-xs italic text-gray-400 -mt-4">Gbr 1.1: Suasana jamaah sedang beribadah dengan tertib.</p>
-                    <h3>Kesiapan Hidrasi Tubuh</h3>
-                    <p>Latihlah diri Anda untuk minum air putih minimal 2 liter sehari. Di Tanah Suci, Anda akan terpapar matahari terik yang bisa menyebabkan dehidrasi parah. Biasakan membawa botol minum kemanapun Anda pergi agar metabolisme tubuh tetap stabil selama menjalankan urutan ibadah umroh.</p>
-                    <h2>3. Istirahat Cukup Sebelum Berangkat</h2>
-                    <p>Jangan terlalu banyak melakukan aktivitas berat di minggu terakhir sebelum terbang. Anda butuh energi penuh untuk perjalanan pesawat belasan jam dan langsung memulai proses umroh saat tiba di Makkah. Pastikan waktu tidur Anda terjaga minimal 7-8 jam setiap malam.</p>
-                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKDkDbIDJieKbVm/giphy.gif" class="promo-gif">
-                `,
-                faq: `<div><h5 class="font-bold">Kapan waktu terbaik mulai latihan fisik?</h5><p>Minimal 4-6 minggu sebelum keberangkatan.</p></div>`,
-                conclusion: "Persiapan fisik yang matang adalah kunci ibadah yang tenang dan khusyuk."
-            },
-            // Anda dapat menambahkan ID 2 s/d 9 dengan pola konten yang sama (min 500 kata)
-        };
+  <script>
+    // =========================
+    // ✅ DATABASE ARTIKEL (1–9)
+    // =========================
+    const database = {
+      "1": {
+        title: "Persiapan Fisik Sebelum Umroh 2026: Panduan Stamina, Latihan, dan Kebiasaan Sehat",
+        tag: "Persiapan Jamaah",
+        meta: "HELLO STAR • Edukasi Umroh 2026 • Update: 2026",
+        img: "img/umroh1.jpeg",
+        imgDesc: "Ilustrasi persiapan fisik jamaah sebelum keberangkatan.",
+        excerpt: "Panduan lengkap menjaga stamina umroh: latihan jalan, hidrasi, nutrisi, tidur, hingga strategi mengurangi pegal saat tawaf & sai.",
+        author: { name: "Tim Redaksi Hello Star", role: "Travel Consultant & Umroh Advisor", bio: "Menyusun panduan berbasis praktik lapangan untuk membantu jamaah beribadah lebih siap, nyaman, dan khusyuk." },
+        content: `
+          <p>Ibadah umroh bukan hanya perjalanan spiritual, tetapi juga perjalanan fisik yang menuntut tubuh bergerak aktif hampir setiap hari. Di Tanah Suci, Anda akan banyak berjalan: dari hotel ke Masjidil Haram, melakukan tawaf tujuh putaran, lalu sai bolak-balik antara Shafa dan Marwah. Walau kini fasilitas semakin baik, kepadatan jamaah dan ritme ibadah bisa membuat tubuh cepat lelah jika tidak dipersiapkan sejak awal.</p>
 
-        const params = new URLSearchParams(window.location.search);
-        const id = params.get('id') || "1";
-        const art = database[id] || database["1"];
+          <blockquote>“Ibadah yang khusyuk lahir dari hati yang tenang—dan tubuh yang cukup kuat untuk menjalaninya.”</blockquote>
 
-        // Fill Page
-        document.getElementById('page-title').innerText = art.title;
-        document.getElementById('art-h1').innerText = art.title;
-        document.getElementById('art-img').src = art.img;
-        document.getElementById('art-img-cap').innerText = "Foto: " + art.imgDesc;
-        document.getElementById('art-body').innerHTML = art.content;
-        document.getElementById('art-faq').innerHTML = art.faq;
-        document.getElementById('art-conclusion').innerText = art.conclusion;
+          <h2>1. Latihan Jalan Kaki yang Terukur</h2>
+          <p>Mulai 4–6 minggu sebelum keberangkatan, latih kebiasaan jalan kaki secara konsisten. Target aman untuk pemula adalah 30 menit per hari, lalu naikkan bertahap menjadi 45–60 menit. Fokusnya bukan kecepatan, melainkan daya tahan. Jika memungkinkan, sisipkan latihan menaiki tangga karena hotel dan area masjid kadang menuntut perubahan level lantai.</p>
+          <p>Gunakan sepatu yang sudah “break-in” (sudah sering dipakai) agar kaki tidak kaget. Jangan membeli sepatu baru mepet keberangkatan karena berisiko lecet. Selain itu, biasakan memakai kaus kaki yang menyerap keringat untuk mengurangi gesekan.</p>
 
-        // Auto TOC Logic (Sangat Penting)
-        const headings = document.getElementById('art-body').querySelectorAll('h2, h3');
-        const tocList = document.getElementById('toc-list');
-        headings.forEach((h, i) => {
-            h.id = "sec-" + i;
-            tocList.innerHTML += `<a href="#sec-${i}" class="block hover:text-yellow-600 ${h.tagName === 'H3' ? 'ml-4 opacity-70' : 'font-bold'}">${h.innerText}</a>`;
-        });
+          <img src="https://images.unsplash.com/photo-1520975869018-9ea78c0b0b50?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Latihan jalan kaki">
+          <p class="img-caption">Gbr 1.1: Latihan jalan kaki teratur membantu tubuh adaptif menghadapi aktivitas padat selama umroh.</p>
 
-        function toggleTOC() { document.getElementById('toc-list').classList.toggle('hidden'); document.getElementById('toc-icon').classList.toggle('rotate-180'); }
+          <h2>2. Latihan Kekuatan Ringan untuk Sendi</h2>
+          <p>Selain jalan kaki, tubuh butuh dukungan otot inti (core) dan kaki agar sendi tidak cepat “ngedrop”. Anda tidak perlu gym; cukup latihan ringan di rumah: squat ringan, calf raises, plank, dan peregangan hamstring. Lakukan 2–3 kali seminggu. Latihan ini membantu menjaga stabilitas lutut, pinggul, dan punggung bawah—bagian yang sering terasa nyeri ketika berdiri lama saat shalat.</p>
 
-        // Share Link
-        const url = window.location.href;
-        document.getElementById('share-wa').href = `https://wa.me/?text=Baca ini: ${url}`;
-        document.getElementById('share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+          <h3>Teknik Peregangan Setelah Latihan</h3>
+          <p>Setelah jalan kaki, lakukan peregangan 5–8 menit. Peregangan sederhana mengurangi risiko kram dan membuat otot lebih lentur. Fokus pada betis, paha depan, paha belakang, dan telapak kaki. Kebiasaan ini sangat berguna karena rutinitas ibadah sering membuat Anda melakukan aktivitas berulang dalam waktu singkat.</p>
 
-        // Related Logic (Baca Juga & Bottom)
-        const sideRel = document.getElementById('side-related');
-        const bottomRel = document.getElementById('bottom-related');
-        const ids = Object.keys(database).filter(k => k !== id).slice(0, 3);
-        
-        ids.forEach(rid => {
-            const r = database[rid];
-            sideRel.innerHTML += `<a href="article.html?id=${rid}" class="block border-b border-white/10 pb-4 hover:text-yellow-400 transition"><h5 class="text-sm font-bold">${r.title}</h5><p class="text-[10px] opacity-50 mt-1 uppercase">Klik Baca Selengkapnya</p></a>`;
-            bottomRel.innerHTML += `
-                <div class="bg-white rounded-2xl shadow-lg border overflow-hidden flex flex-col">
-                    <img src="${r.img}" class="h-40 w-full object-cover">
-                    <div class="p-6 flex-grow">
-                        <h4 class="font-bold text-emerald-950 mb-4">${r.title}</h4>
-                        <a href="article.html?id=${rid}" class="text-yellow-600 font-bold text-xs uppercase tracking-widest hover:text-emerald-800 transition">Baca Selengkapnya</a>
-                    </div>
-                </div>`;
-        });
+          <h2>3. Pola Makan, Nutrisi, dan Hidrasi</h2>
+          <p>Cuaca di Arab Saudi cenderung panas dan kering. Kekurangan cairan akan terasa cepat: pusing, lemas, bibir pecah, atau susah konsentrasi. Biasakan minum air putih minimal 2 liter per hari sebelum berangkat. Bila Anda sering lupa minum, gunakan botol ukuran 600–750 ml dan targetkan habis 3 botol/hari.</p>
+          <p>Untuk makanan, perbanyak sayur, buah, dan sumber protein yang mudah dicerna (telur, ikan, ayam). Kurangi makanan pedas berlebihan jika Anda mudah mengalami maag. Untuk sebagian jamaah, madu, kurma, dan vitamin C membantu menjaga daya tahan—namun tetap sesuaikan kondisi tubuh Anda.</p>
 
-        // Jika data DB masih sedikit, gunakan dummy untuk "Baca Juga" agar tidak kosong
-        if(ids.length === 0) {
-            sideRel.innerHTML = `<p class='text-xs opacity-50'>Artikel menarik lainnya akan segera hadir.</p>`;
-            bottomRel.innerHTML = `<p class='col-span-3 text-center text-gray-400'>Nantikan artikel edukasi selanjutnya.</p>`;
-        }
-    </script>
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKVUn7iM8FMEU24/giphy.gif" class="promo-gif" alt="Promo GIF">
+          <p class="img-caption">Gbr 1.2: Ingatkan diri untuk tetap bergerak aktif dan menjaga kebiasaan sehat sebelum berangkat.</p>
+
+          <h2>4. Manajemen Tidur dan Jet Lag</h2>
+          <p>Perjalanan panjang bisa membuat tubuh “kaget”. Seminggu sebelum berangkat, cobalah merapikan jam tidur: tidur lebih awal, bangun lebih pagi. Ini membantu adaptasi ketika jadwal ibadah padat dan Anda ingin mendapatkan waktu terbaik untuk shalat di masjid. Jika Anda punya riwayat insomnia, siapkan strategi sederhana: kurangi kafein sore hari, hindari layar gawai sebelum tidur, dan gunakan teknik napas perlahan.</p>
+
+          <h2>5. Strategi Mengurangi Pegal Saat Ibadah</h2>
+          <p>Pegal biasanya muncul di betis, telapak kaki, pinggang, dan bahu. Kuncinya: jangan memaksakan diri di hari pertama. Setelah tiba, beri waktu tubuh beradaptasi. Gunakan alas kaki yang tepat saat berjalan dari hotel ke masjid (sesuai aturan lokasi). Siapkan minyak gosok atau balsem, dan lakukan pijat ringan sebelum tidur. Banyak jamaah juga terbantu dengan kaus kaki kompresi ringan ketika berjalan jauh.</p>
+
+          <blockquote>“Persiapan terbaik adalah yang konsisten, bukan yang ekstrem.”</blockquote>
+
+          <h2>Checklist Singkat Persiapan Fisik</h2>
+          <ul>
+            <li>Jalan kaki 30–60 menit, 4–5x seminggu</li>
+            <li>Latihan otot kaki & core 2–3x seminggu</li>
+            <li>Minum 2 liter/hari dan latihan disiplin hidrasi</li>
+            <li>Rapikan jam tidur minimal 7 jam</li>
+            <li>Uji coba sepatu dan kaus kaki jauh hari</li>
+          </ul>
+
+          <img src="https://images.unsplash.com/photo-1527596428171-7885b82c91c6?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Masjid">
+          <p class="img-caption">Gbr 1.3: Tubuh yang siap membantu Anda menikmati ibadah dengan lebih khusyuk dan tenang.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKDkDbIDJieKbVm/giphy.gif" class="promo-gif" alt="Promo GIF 2">
+          <p class="img-caption">Gbr 1.4: Konsistensi kecil tiap hari jauh lebih efektif daripada latihan mendadak.</p>
+        `,
+        faq: `
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Kapan waktu terbaik mulai latihan fisik?</h5>
+            <p class="text-gray-600">Idealnya 4–6 minggu sebelum keberangkatan. Jika waktumu lebih sempit, mulai dari kebiasaan kecil (jalan 15–20 menit) lalu tingkatkan bertahap.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Apakah perlu gym untuk persiapan umroh?</h5>
+            <p class="text-gray-600">Tidak wajib. Jalan kaki terukur, latihan kekuatan ringan, dan peregangan rutin sudah sangat membantu.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Bagaimana kalau punya riwayat nyeri lutut?</h5>
+            <p class="text-gray-600">Mulai latihan dengan intensitas rendah, pilih sepatu empuk, dan pertimbangkan konsultasi dokter/fisioterapis sebelum berangkat.</p>
+          </div>
+        `,
+        conclusion: "Persiapan fisik bukan soal kuat-kuatan, tetapi soal konsistensi: latihan ringan, hidrasi, tidur cukup, dan manajemen energi agar ibadah umroh berjalan nyaman dan khusyuk."
+      },
+
+      "2": {
+        title: "Syarat Dokumen Umroh Terbaru: Checklist, Tips Cepat Lolos, dan Kesalahan yang Sering Terjadi",
+        tag: "Dokumen & Administrasi",
+        meta: "HELLO STAR • Edukasi Umroh 2026 • Update: 2026",
+        img: "img/umrohh2.jpeg",
+        imgDesc: "Ilustrasi persiapan dokumen perjalanan sebelum umroh.",
+        excerpt: "Panduan detail menyiapkan dokumen umroh: paspor, foto, identitas, hingga tips menghindari revisi dan keterlambatan proses.",
+        author: { name: "Tim Redaksi Hello Star", role: "Admin & Visa Support", bio: "Berpengalaman menangani verifikasi dokumen jamaah dan alur administrasi keberangkatan." },
+        content: `
+          <p>Dokumen adalah fondasi keberangkatan umroh. Banyak jamaah sudah siap biaya dan kesehatan, tetapi tertunda karena berkas tidak rapi atau ada detail kecil yang terlewat. Padahal, hal-hal yang tampak sepele—seperti masa berlaku paspor atau foto yang tidak sesuai—bisa membuat proses verifikasi menjadi lebih lama. Dengan checklist yang jelas, Anda bisa menyiapkan semuanya lebih cepat, lebih aman, dan minim revisi.</p>
+
+          <blockquote>“Ketenangan hati dimulai dari dokumen yang rapi.”</blockquote>
+
+          <h2>1. Paspor: Masa Berlaku, Nama, dan Data Identitas</h2>
+          <p>Pastikan paspor Anda masih berlaku cukup lama. Banyak pihak menyarankan masa berlaku paspor setidaknya beberapa bulan setelah tanggal kepulangan. Selain itu, periksa kesesuaian nama di paspor dengan identitas lain (KTP/KK). Jika nama di paspor berbeda ejaan, sebaiknya diselesaikan lebih awal agar tidak memicu pemeriksaan tambahan.</p>
+
+          <h3>Kesalahan Paspor yang Sering Terjadi</h3>
+          <ul>
+            <li>Paspor hampir habis masa berlaku</li>
+            <li>Nama terlalu panjang dan pemenggalan tidak konsisten</li>
+            <li>Perbedaan ejaan antara paspor dan KTP/KK</li>
+          </ul>
+
+          <img src="https://images.unsplash.com/photo-1521790797524-b2497295b8a0?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Dokumen travel">
+          <p class="img-caption">Gbr 2.1: Cek ulang konsistensi data agar tidak bolak-balik revisi.</p>
+
+          <h2>2. KTP, KK, dan Dokumen Pendukung</h2>
+          <p>KTP dan KK biasanya menjadi rujukan untuk memverifikasi identitas. Jika Anda sudah menikah, pastikan data pasangan dan alamat sesuai. Untuk jamaah lansia, beberapa travel meminta data keluarga/pendamping agar koordinasi di lapangan lebih mudah. Bila Anda pernah mengganti nama, siapkan dokumen pendukung sesuai kebutuhan (misalnya akta atau surat keterangan) agar alurnya jelas.</p>
+
+          <h2>3. Foto Resmi dan Ketentuan Teknis</h2>
+          <p>Foto sering menjadi sumber revisi. Pastikan foto terbaru, wajah terlihat jelas, dan tidak tertutup aksesori yang berlebihan. Untuk keamanan, siapkan beberapa versi: latar belakang yang netral, ukuran standar, dan hasil foto yang tidak terlalu banyak filter. Walau terlihat sederhana, ketepatan foto membuat proses input data jauh lebih lancar.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKVUn7iM8FMEU24/giphy.gif" class="promo-gif" alt="Promo GIF">
+          <p class="img-caption">Gbr 2.2: Siapkan dokumen sejak awal supaya proses terasa ringan.</p>
+
+          <h2>4. Buku Nikah, Akta Lahir, dan Berkas Khusus</h2>
+          <p>Untuk beberapa kondisi (misalnya nama berbeda, anak ikut umroh bersama orang tua, atau kebutuhan data keluarga), dokumen seperti buku nikah atau akta lahir dapat dibutuhkan sebagai penguat. Tips terbaik: simpan versi scan yang jelas dan versi fisik di map terpisah. Usahakan format scan rapi (tidak miring, tidak terpotong) agar mudah dibaca.</p>
+
+          <h2>5. Tips Praktis: Sistem Folder dan Backup Digital</h2>
+          <p>Buat folder khusus di ponsel dan cloud (Google Drive/iCloud) dengan nama “UMROH 2026”. Di dalamnya, susun: Paspor, KTP, KK, Foto, dan Dokumen Lain. Di versi fisik, gunakan map dengan divider. Kebiasaan ini berguna saat check-in, imigrasi, atau ketika Anda perlu menunjukkan dokumen dengan cepat.</p>
+
+          <blockquote>“Yang membuat proses cepat bukan ‘keberuntungan’, tapi kerapian.”</blockquote>
+
+          <h2>Checklist Cepat Dokumen Umroh</h2>
+          <ul>
+            <li>Paspor (cek masa berlaku & ejaan nama)</li>
+            <li>KTP dan KK (sesuai data)</li>
+            <li>Foto formal terbaru</li>
+            <li>Buku nikah/akta lahir (jika diperlukan)</li>
+            <li>Scan digital + backup cloud</li>
+          </ul>
+
+          <img src="https://images.unsplash.com/photo-1450101215322-bf5cd27642fc?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Checklist dokumen">
+          <p class="img-caption">Gbr 2.3: Checklist sederhana mencegah keterlambatan di tahap administrasi.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKDkDbIDJieKbVm/giphy.gif" class="promo-gif" alt="Promo GIF 2">
+          <p class="img-caption">Gbr 2.4: Rapi dulu, tenang kemudian.</p>
+        `,
+        faq: `
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Dokumen apa yang paling sering bikin revisi?</h5>
+            <p class="text-gray-600">Umumnya foto yang tidak sesuai ketentuan dan paspor yang masa berlakunya mepet.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Apakah harus membawa semua dokumen fisik saat berangkat?</h5>
+            <p class="text-gray-600">Minimal paspor dan identitas penting. Dokumen pendukung lain sebaiknya dibawa versi fotokopi + scan digital.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Bolehkah hanya simpan dokumen di HP?</h5>
+            <p class="text-gray-600">Jangan. Tetap siapkan versi fisik utama karena kebutuhan imigrasi/airline umumnya meminta dokumen asli.</p>
+          </div>
+        `,
+        conclusion: "Dokumen yang rapi mempercepat proses dan mengurangi stres. Mulai dari paspor, identitas, foto, hingga backup digital—semua akan terasa sangat membantu saat hari keberangkatan."
+      },
+
+      "3": {
+        title: "Keutamaan Umroh di Bulan Ramadhan: Strategi Ibadah, Manajemen Energi, dan Adab di Masjid",
+        tag: "Ibadah & Manasik",
+        meta: "HELLO STAR • Edukasi Umroh 2026 • Update: 2026",
+        img: "img/umroh5s.webp",
+        imgDesc: "Suasana malam yang khusyuk di sekitar area Masjid.",
+        excerpt: "Panduan umroh Ramadhan agar tetap khusyuk: pembagian waktu, strategi stamina, adab di Masjidil Haram, dan prioritas ibadah.",
+        author: { name: "Tim Redaksi Hello Star", role: "Ibadah Guide & Manasik", bio: "Merangkum kebiasaan terbaik jamaah untuk menjaga kualitas ibadah selama Ramadhan." },
+        content: `
+          <p>Umroh di bulan Ramadhan menjadi impian banyak muslim karena suasananya sangat berbeda: masjid lebih hidup, semangat ibadah terasa kuat, dan kebersamaan jamaah dari berbagai negara memperkaya pengalaman spiritual. Namun, Ramadhan juga membawa tantangan: puasa, kepadatan jamaah, dan jam tidur yang berubah. Tanpa strategi, ibadah bisa terasa berat. Dengan perencanaan yang baik, Anda bisa menjaga stamina sekaligus memaksimalkan kualitas ibadah.</p>
+
+          <blockquote>“Bukan banyaknya aktivitas yang utama, tetapi kualitas hati saat mendekat kepada Allah.”</blockquote>
+
+          <h2>1. Menata Prioritas Ibadah</h2>
+          <p>Prioritas utama umroh Ramadhan adalah menunaikan rangkaian umroh dengan tenang dan sesuai tuntunan, lalu menjaga shalat wajib berjamaah. Setelah itu barulah menambah amalan sunnah seperti tilawah, dzikir, dan qiyam. Banyak jamaah kelelahan karena mengejar semuanya sekaligus pada hari-hari awal. Padahal, ritme Ramadhan sebaiknya dibangun bertahap.</p>
+
+          <h3>Contoh Prioritas Harian yang Proporsional</h3>
+          <ul>
+            <li>Shalat wajib berjamaah + dzikir ringkas</li>
+            <li>Tilawah 30–60 menit (disesuaikan kondisi)</li>
+            <li>Istirahat siang untuk persiapan Tarawih</li>
+            <li>Tarawih + qiyam sesuai kemampuan</li>
+          </ul>
+
+          <img src="https://images.unsplash.com/photo-1526481280695-3c687fd643ed?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Tilawah">
+          <p class="img-caption">Gbr 3.1: Menjaga ritme ibadah membuat Ramadhan terasa lebih terarah.</p>
+
+          <h2>2. Manajemen Energi Saat Puasa</h2>
+          <p>Kunci umroh Ramadhan adalah energi. Atur waktu keluar-masuk masjid. Jika cuaca panas, kurangi aktivitas di luar setelah dzuhur. Simpan tenaga untuk waktu-waktu utama seperti maghrib, isya, tarawih, dan shubuh. Pastikan berbuka dengan porsi yang cukup, tidak berlebihan, dan tetap minum agar tubuh tidak dehidrasi.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKVUn7iM8FMEU24/giphy.gif" class="promo-gif" alt="Promo GIF">
+          <p class="img-caption">Gbr 3.2: “Pelan tapi konsisten” lebih aman daripada memaksakan diri di awal.</p>
+
+          <h2>3. Adab dan Etika di Masjid yang Padat</h2>
+          <p>Di Ramadhan, Masjidil Haram dan Masjid Nabawi sangat ramai. Jaga adab: tidak mendorong, tidak berebut tempat secara kasar, dan mengutamakan keselamatan. Jika Anda ingin shalat di area tertentu, datang lebih awal. Saling memudahkan adalah bagian dari ibadah. Ingat, orang lain juga sedang berusaha khusyuk.</p>
+
+          <h3>Tips Aman Saat Kepadatan Tinggi</h3>
+          <ul>
+            <li>Simpan barang di tas kecil dan rapat</li>
+            <li>Hindari membawa barang berlebihan</li>
+            <li>Tentukan titik kumpul jika terpisah rombongan</li>
+          </ul>
+
+          <h2>4. Waktu Terbaik untuk Umroh</h2>
+          <p>Beberapa jamaah memilih umroh di waktu yang lebih lengang (misalnya selepas tarawih atau di jam tertentu), tetapi ini sangat tergantung kebijakan dan kondisi setempat. Prinsipnya: pilih waktu yang aman, tidak memicu bahaya karena desakan, dan sesuai kemampuan fisik Anda. Bila Anda lansia, prioritaskan keselamatan dan bimbingan muthawif.</p>
+
+          <blockquote>“Khusyuk bukan lahir dari tempat terbaik, tetapi dari niat terbaik.”</blockquote>
+
+          <h2>5. Menjaga Hati: Fokus pada Makna</h2>
+          <p>Di Ramadhan, mudah sekali terdistraksi: ingin mengejar spot terbaik, ingin foto, ingin ikut semua agenda. Agar ibadah terasa “penuh”, ingat tujuan utama: mendekat kepada Allah. Ambil momen sederhana: duduk tenang setelah shalat, merenungi doa, atau membantu jamaah lain. Justru momen kecil itu sering menjadi kenangan paling bermakna.</p>
+
+          <img src="https://images.unsplash.com/photo-1519817914152-22f90e42b1f0?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Suasana masjid">
+          <p class="img-caption">Gbr 3.3: Menjaga ketenangan batin adalah inti ibadah Ramadhan.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKDkDbIDJieKbVm/giphy.gif" class="promo-gif" alt="Promo GIF 2">
+          <p class="img-caption">Gbr 3.4: Atur energi, jaga adab, dan fokus pada makna.</p>
+        `,
+        faq: `
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Apakah umroh Ramadhan pasti lebih ramai?</h5>
+            <p class="text-gray-600">Umumnya iya, karena banyak jamaah memilih Ramadhan. Karena itu, strategi waktu dan adab di keramaian sangat penting.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Bagaimana agar tidak cepat lelah saat puasa?</h5>
+            <p class="text-gray-600">Atur ritme aktivitas, cukup minum saat berbuka/sahur, dan jangan memaksakan sunnah terlalu banyak di awal.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Lebih baik fokus tarawih atau umroh berkali-kali?</h5>
+            <p class="text-gray-600">Pilih yang paling menjaga kualitas ibadah Anda. Umroh sah, tarawih juga utama. Kuncinya proporsional.</p>
+          </div>
+        `,
+        conclusion: "Umroh Ramadhan akan terasa indah bila Anda menjaga prioritas, stamina, dan adab. Dengan ritme yang tepat, ibadah menjadi lebih khusyuk dan pengalaman spiritual semakin bermakna."
+      },
+
+      "4": {
+        title: "Manajemen Keuangan Umroh: Cara Menabung Efektif, Strategi Cicilan, dan Menghindari Biaya Tersembunyi",
+        tag: "Keuangan & Perencanaan",
+        meta: "HELLO STAR • Edukasi Umroh 2026 • Update: 2026",
+        img: "img/umroh4s.webp",
+        imgDesc: "Ilustrasi perencanaan keuangan untuk ibadah umroh bersama keluarga.",
+        excerpt: "Panduan menyusun target biaya, cara menabung realistis, dan cara menghindari jebakan biaya tambahan agar budget aman sampai pulang.",
+        author: { name: "Tim Redaksi Hello Star", role: "Travel Planner", bio: "Membantu jamaah menyusun rencana perjalanan yang terukur dan transparan, termasuk budgeting." },
+        content: `
+          <p>Banyak orang ingin berangkat umroh tetapi ragu karena merasa biayanya besar. Padahal, kunci utamanya bukan “punya uang banyak”, melainkan memiliki rencana yang jelas dan konsisten. Dengan manajemen keuangan yang rapi, Anda bisa mengubah impian umroh menjadi target yang realistis—bahkan untuk keluarga. Artikel ini akan membantu Anda menyiapkan strategi menabung, menyusun pos biaya, dan mengenali biaya tersembunyi agar anggaran tetap aman.</p>
+
+          <blockquote>“Perjalanan yang tenang dimulai dari rencana yang terang.”</blockquote>
+
+          <h2>1. Tetapkan Target Biaya dan Waktu</h2>
+          <p>Langkah pertama adalah menentukan target biaya berdasarkan paket yang Anda incar, lalu tentukan waktu keberangkatan. Misalnya Anda ingin berangkat 12 bulan lagi. Dari sini, Anda bisa menghitung kebutuhan tabungan per bulan. Jangan lupa menyiapkan buffer 10–15% untuk kebutuhan tambahan seperti perlengkapan, oleh-oleh, atau biaya kesehatan ringan.</p>
+
+          <h3>Rumus Sederhana</h3>
+          <ul>
+            <li>Target total = biaya paket + buffer (10–15%)</li>
+            <li>Tabungan bulanan = target total ÷ jumlah bulan</li>
+          </ul>
+
+          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Budgeting">
+          <p class="img-caption">Gbr 4.1: Anggaran yang terlihat jelas membuat disiplin menabung lebih mudah.</p>
+
+          <h2>2. Buat Pos Keuangan Khusus Umroh</h2>
+          <p>Hindari menabung umroh di rekening yang sama dengan pengeluaran harian. Buat rekening atau dompet digital khusus. Banyak orang gagal karena “tabungan tercampur” dan akhirnya terpakai. Cara lain: gunakan metode amplop digital (pos: tabungan umroh, perlengkapan, dana darurat).</p>
+
+          <h2>3. Strategi Menabung yang Realistis</h2>
+          <p>Jika target bulanan terasa berat, lakukan kombinasi strategi: kurangi pengeluaran kecil (kopi harian, langganan yang jarang dipakai), jual barang yang tidak terpakai, dan sisihkan bonus/THR ke tabungan umroh. Kunci menabung adalah konsistensi, bukan nominal besar sesekali.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKVUn7iM8FMEU24/giphy.gif" class="promo-gif" alt="Promo GIF">
+          <p class="img-caption">Gbr 4.2: Kebiasaan kecil yang konsisten bisa jadi tiket umroh Anda.</p>
+
+          <h2>4. Cicilan: Boleh, Tapi Pahami Aturannya</h2>
+          <p>Cicilan dapat membantu asalkan transparan dan sesuai kemampuan. Pastikan Anda mengerti total pembayaran, jadwal cicilan, serta ketentuan pembatalan. Jangan memaksakan cicilan yang membuat kebutuhan keluarga terganggu. Pilih skema yang membuat Anda tetap tenang sampai hari keberangkatan.</p>
+
+          <h2>5. Waspada Biaya Tersembunyi</h2>
+          <p>Biaya tersembunyi sering muncul karena kurang detail membaca informasi paket. Tanyakan dengan jelas: apa yang termasuk (hotel, makan, transport, manasik, perlengkapan) dan apa yang tidak termasuk (kelebihan bagasi, kebutuhan pribadi, upgrade kamar). Travel yang amanah akan menjelaskan secara rinci.</p>
+
+          <blockquote>“Transparansi biaya adalah ciri layanan yang profesional.”</blockquote>
+
+          <h2>6. Budget Harian di Tanah Suci</h2>
+          <p>Buat budget harian sederhana untuk pengeluaran pribadi: makan tambahan, air minum, transport di luar program, dan oleh-oleh. Anda bisa membatasi pengeluaran dengan daftar belanja oleh-oleh sejak awal. Banyak jamaah “bocor halus” karena belanja impulsif di hari-hari terakhir.</p>
+
+          <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Money plan">
+          <p class="img-caption">Gbr 4.3: Pisahkan dana ibadah dan dana belanja agar tetap terkendali.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKDkDbIDJieKbVm/giphy.gif" class="promo-gif" alt="Promo GIF 2">
+          <p class="img-caption">Gbr 4.4: Rencana keuangan yang matang membuat ibadah lebih tenang.</p>
+        `,
+        faq: `
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Lebih baik menabung atau langsung cicilan?</h5>
+            <p class="text-gray-600">Idealnya menabung. Cicilan boleh jika jelas aturannya dan tidak mengganggu kebutuhan utama keluarga.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Berapa buffer yang aman?</h5>
+            <p class="text-gray-600">Umumnya 10–15% dari biaya paket untuk perlengkapan, kebutuhan pribadi, dan kejadian tak terduga.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Bagaimana menahan belanja impulsif?</h5>
+            <p class="text-gray-600">Buat daftar oleh-oleh dari awal + batas nominal. Pisahkan uang belanja dari uang kebutuhan ibadah.</p>
+          </div>
+        `,
+        conclusion: "Manajemen keuangan umroh yang baik bukan membuat hidup berat, tetapi membuat tujuan ibadah terasa dekat. Susun target, pisahkan tabungan, pahami biaya, dan jaga disiplin agar perjalanan makin tenang."
+      },
+
+      "5": {
+        title: "Packing List Lengkap Umroh: Checklist Barang Wajib, Barang Sunnah, dan Tips Koper Ringan",
+        tag: "Perlengkapan Umroh",
+        meta: "HELLO STAR • Edukasi Umroh 2026 • Update: 2026",
+        img: "img/umroh3s.webp",
+        imgDesc: "Ilustrasi persiapan barang bawaan sebelum perjalanan umroh.",
+        excerpt: "Checklist lengkap koper umroh: pakaian ihram, obat, dokumen, perlengkapan ibadah, dan trik packing supaya tidak overweight.",
+        author: { name: "Tim Redaksi Hello Star", role: "Ground Handling", bio: "Mengkurasi kebutuhan lapangan jamaah: barang yang benar-benar terpakai dan yang sering terlupa." },
+        content: `
+          <p>Persiapan packing sering dianggap sepele, padahal bisa menentukan kenyamanan selama umroh. Koper yang terlalu penuh membuat Anda repot, tetapi koper yang terlalu minimalis juga bisa membuat Anda stres saat kebutuhan mendadak muncul. Kunci packing yang baik adalah checklist yang jelas: mana yang wajib, mana yang sunnah/opsional, dan bagaimana menyusunnya agar ringan namun tetap lengkap. Di artikel ini, Anda akan mendapatkan panduan packing list yang proporsional, termasuk tips menghindari overweight bagasi.</p>
+
+          <blockquote>“Barang yang paling berguna adalah barang yang tepat—bukan yang paling banyak.”</blockquote>
+
+          <h2>1. Dokumen dan Barang Berharga (Wajib)</h2>
+          <p>Dokumen harus menjadi prioritas utama dan ditempatkan di tas kecil (hand carry) yang selalu Anda bawa. Pisahkan dokumen asli dan salinannya. Siapkan juga dompet kecil khusus untuk menyimpan uang secukupnya saat keluar hotel. Jangan menaruh semua uang di satu tempat.</p>
+          <ul>
+            <li>Paspor + fotokopi</li>
+            <li>KTP + fotokopi</li>
+            <li>Tiket/itinerary (jika ada)</li>
+            <li>Kartu vaksin/berkas pendukung (jika dibutuhkan)</li>
+          </ul>
+
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Dokumen">
+          <p class="img-caption">Gbr 5.1: Simpan dokumen di pouch khusus agar cepat diakses saat diperlukan.</p>
+
+          <h2>2. Pakaian: Pilih yang Nyaman dan Cepat Kering</h2>
+          <p>Cuaca dan aktivitas padat membuat pakaian mudah lembap. Pilih bahan yang menyerap keringat dan cepat kering. Untuk jamaah pria, siapkan kain ihram yang nyaman dan tidak mudah melorot (bisa ditambah sabuk ihram). Untuk jamaah wanita, siapkan gamis yang longgar dan tidak panas.</p>
+
+          <h3>Rekomendasi Jumlah (Rata-rata 9–12 Hari)</h3>
+          <ul>
+            <li>Atasan 4–6</li>
+            <li>Bawahan 3–5</li>
+            <li>Pakaian dalam secukupnya</li>
+            <li>Kaos kaki 4–6 pasang</li>
+            <li>Sendal/sepatu nyaman</li>
+          </ul>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKVUn7iM8FMEU24/giphy.gif" class="promo-gif" alt="Promo GIF">
+          <p class="img-caption">Gbr 5.2: Packing rapi = perjalanan lebih ringan.</p>
+
+          <h2>3. Perlengkapan Ibadah</h2>
+          <p>Perlengkapan ibadah sebaiknya minimal namun fungsional. Anda tidak perlu membawa terlalu banyak buku jika bisa menggunakan versi digital. Yang penting: nyaman dipakai dan mudah dibawa.</p>
+          <ul>
+            <li>Sajadah tipis (opsional)</li>
+            <li>Al-Qur’an kecil / aplikasi Qur’an</li>
+            <li>Tasbih atau counter digital</li>
+            <li>Mukena ringan (wanita)</li>
+          </ul>
+
+          <h2>4. Kesehatan: Obat Pribadi dan Pertolongan Pertama</h2>
+          <p>Obat pribadi adalah penyelamat. Bawa obat rutin (bila ada), obat flu, obat maag, plester luka, minyak angin, dan oralit. Cuaca panas dapat memicu dehidrasi; oralit dan vitamin bisa membantu. Jangan lupa membawa masker dan hand sanitizer untuk kondisi padat.</p>
+
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Obat">
+          <p class="img-caption">Gbr 5.3: Siapkan obat dasar agar tetap nyaman di tengah aktivitas padat.</p>
+
+          <h2>5. Tips Koper Ringan dan Anti Overweight</h2>
+          <p>Gunakan teknik “roll” (menggulung baju) untuk menghemat ruang. Bawa pouch terpisah untuk kategori: dokumen, pakaian, obat, dan kabel. Timbang koper sebelum berangkat. Jika Anda suka belanja oleh-oleh, sisakan ruang 20–30% di koper atau siapkan tas lipat tambahan.</p>
+
+          <blockquote>“Yang sering bikin koper berat adalah ‘jaga-jaga’ yang kebanyakan.”</blockquote>
+
+          <h2>Checklist Ringkas (Wajib & Penting)</h2>
+          <ul>
+            <li>Dokumen + salinan</li>
+            <li>Pakaian nyaman, sandal/sepatu</li>
+            <li>Perlengkapan ibadah</li>
+            <li>Obat pribadi + P3K</li>
+            <li>Charger, adaptor, powerbank</li>
+          </ul>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKDkDbIDJieKbVm/giphy.gif" class="promo-gif" alt="Promo GIF 2">
+          <p class="img-caption">Gbr 5.4: Rapi, ringan, dan siap ibadah.</p>
+        `,
+        faq: `
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Perlu bawa berapa pasang sepatu?</h5>
+            <p class="text-gray-600">Cukup 1 sepatu nyaman + 1 sendal. Fokus pada kenyamanan dan sudah terbiasa dipakai.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Apakah perlu membawa sajadah?</h5>
+            <p class="text-gray-600">Opsional. Jika Anda nyaman, pilih sajadah tipis yang mudah dilipat.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Bagaimana menghindari koper overweight?</h5>
+            <p class="text-gray-600">Gunakan pouch, roll pakaian, timbang koper, dan sisakan ruang untuk oleh-oleh.</p>
+          </div>
+        `,
+        conclusion: "Packing terbaik adalah yang proporsional: cukup, rapi, dan fungsional. Dengan checklist yang jelas, Anda bisa fokus ibadah tanpa repot barang bawaan."
+      },
+
+      "6": {
+        title: "Tips Sehat di Cuaca Ekstrem: Cara Menghadapi Panas, Dehidrasi, dan Jet Lag Saat Umroh",
+        tag: "Kesehatan Jamaah",
+        meta: "HELLO STAR • Edukasi Umroh 2026 • Update: 2026",
+        img: "img/umroh2.jpeg",
+        imgDesc: "Ilustrasi kondisi cuaca panas dan aktivitas jamaah di area masjid.",
+        excerpt: "Panduan anti tumbang: hidrasi, perlindungan panas, pola makan, tidur, dan kebiasaan kecil agar tetap fit selama umroh.",
+        author: { name: "Tim Redaksi Hello Star", role: "Health & Travel Support", bio: "Menggabungkan pengalaman lapangan dan kebiasaan aman untuk menjaga kesehatan jamaah." },
+        content: `
+          <p>Cuaca panas dan kering adalah tantangan paling sering dirasakan jamaah. Bahkan jamaah yang merasa sehat di Indonesia bisa mengalami penurunan stamina karena perubahan iklim, jam tidur, dan aktivitas fisik yang meningkat. Kabar baiknya, banyak masalah kesehatan umum—seperti dehidrasi, sakit tenggorokan, hingga jet lag—bisa dicegah dengan kebiasaan sederhana. Artikel ini membahas strategi praktis agar Anda tetap fit dan bisa beribadah dengan nyaman.</p>
+
+          <blockquote>“Jaga kesehatan bukan untuk gaya hidup, tetapi untuk menjaga kualitas ibadah.”</blockquote>
+
+          <h2>1. Dehidrasi: Musuh Utama di Cuaca Panas</h2>
+          <p>Dehidrasi sering muncul tanpa disadari. Tanda-tandanya: pusing, mulut kering, lemas, urine pekat, dan sulit fokus. Biasakan minum sedikit tetapi sering, bukan menunggu haus. Saat di masjid, bawa botol kecil jika memungkinkan, dan manfaatkan kesempatan minum setelah shalat.</p>
+
+          <h3>Strategi Minum yang Aman</h3>
+          <ul>
+            <li>Minum 150–200 ml setiap 30–60 menit saat aktivitas tinggi</li>
+            <li>Tambahkan oralit jika tubuh terasa sangat lemas</li>
+            <li>Kurangi minuman berkafein berlebihan</li>
+          </ul>
+
+          <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Minum air">
+          <p class="img-caption">Gbr 6.1: Minum teratur menjaga energi lebih stabil sepanjang hari.</p>
+
+          <h2>2. Lindungi Tubuh dari Panas</h2>
+          <p>Gunakan payung lipat atau topi (sesuai kondisi dan adab di lokasi). Pilih pakaian yang menyerap keringat. Untuk pria, kain ihram yang nyaman membantu sirkulasi udara. Untuk wanita, pilih bahan tidak panas dan tetap syar’i. Hindari berdiri terlalu lama di area terbuka tanpa perlindungan.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKVUn7iM8FMEU24/giphy.gif" class="promo-gif" alt="Promo GIF">
+          <p class="img-caption">Gbr 6.2: Persiapan kecil bisa mencegah sakit besar.</p>
+
+          <h2>3. Tenggorokan Kering dan Batuk</h2>
+          <p>Udara kering dapat membuat tenggorokan cepat iritasi. Minum air hangat, gunakan masker di keramaian, dan hindari terlalu sering minum es. Beberapa jamaah terbantu dengan madu atau permen pelega tenggorokan. Jika Anda mudah alergi debu, siapkan obat sesuai anjuran dokter.</p>
+
+          <h2>4. Jet Lag dan Pola Tidur</h2>
+          <p>Jet lag membuat tubuh lelah, mudah emosi, dan sulit fokus saat ibadah. Untuk mengurangi efeknya: tidur cukup sebelum berangkat, atur tidur singkat (power nap) 20–30 menit siang hari, dan paparkan tubuh pada cahaya pagi agar ritme tubuh cepat menyesuaikan.</p>
+
+          <h3>Kebiasaan yang Membantu</h3>
+          <ul>
+            <li>Hindari tidur panjang sore hari</li>
+            <li>Kurangi layar gawai menjelang tidur</li>
+            <li>Minum air cukup setelah penerbangan</li>
+          </ul>
+
+          <blockquote>“Tidak ada ibadah yang sempurna tanpa menjaga amanah tubuh.”</blockquote>
+
+          <h2>5. Makan Secukupnya, Pilih yang Mudah Dicerna</h2>
+          <p>Perubahan makanan bisa memicu masalah pencernaan. Pilih porsi kecil tetapi cukup, perbanyak buah, dan hindari makanan yang terlalu pedas bila Anda sensitif. Pastikan juga Anda tidak hanya mengandalkan makanan instan. Bila perlu, bawa snack sehat seperti kacang, biskuit gandum, atau kurma.</p>
+
+          <img src="https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Buah dan makanan sehat">
+          <p class="img-caption">Gbr 6.3: Makan teratur dan ringan menjaga energi lebih stabil.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKDkDbIDJieKbVm/giphy.gif" class="promo-gif" alt="Promo GIF 2">
+          <p class="img-caption">Gbr 6.4: Jaga pola, jaga tenaga, jaga ibadah.</p>
+        `,
+        faq: `
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Berapa minimal minum air per hari saat umroh?</h5>
+            <p class="text-gray-600">Tergantung aktivitas, tetapi target aman adalah minum rutin dan menjaga urine tidak terlalu pekat. Saat cuaca panas, frekuensi minum perlu ditambah.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Bagaimana mencegah sakit tenggorokan?</h5>
+            <p class="text-gray-600">Gunakan masker di keramaian, minum cukup, dan hindari perubahan ekstrem (misalnya minum es berlebihan).</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Jet lag bikin ibadah terganggu, solusinya?</h5>
+            <p class="text-gray-600">Power nap singkat, paparan cahaya pagi, dan atur ritme tidur bertahap sebelum berangkat.</p>
+          </div>
+        `,
+        conclusion: "Tetap sehat di cuaca ekstrem bukan soal tahan banting, tetapi soal kebiasaan: minum teratur, lindungi diri dari panas, makan secukupnya, dan kelola tidur agar ibadah tetap nyaman."
+      },
+
+      "7": {
+        title: "Mengenal Miqat dan Ihram: Panduan Teknis, Larangan, serta Contoh Kasus yang Sering Terjadi",
+        tag: "Manasik Umroh",
+        meta: "HELLO STAR • Edukasi Umroh 2026 • Update: 2026",
+        img: "img/galeri1.webp",
+        imgDesc: "Ilustrasi perjalanan jamaah menuju tahapan awal umroh (miqat & ihram).",
+        excerpt: "Penjelasan miqat dan ihram yang mudah dipahami: kapan niat, dari mana miqat, larangan ihram, dan solusi bila lupa niat.",
+        author: { name: "Tim Redaksi Hello Star", role: "Muthawif & Manasik", bio: "Membimbing jamaah memahami manasik praktis agar ibadah sesuai tuntunan." },
+        content: `
+          <p>Miqat dan ihram adalah gerbang resmi untuk memulai umroh. Banyak jamaah merasa takut salah, bukan karena ibadahnya rumit, melainkan karena kurang memahami urutan dan batasan. Padahal, jika Anda mengerti konsepnya, miqat dan ihram justru membantu menata niat dan menjaga adab selama ibadah. Artikel ini membahas definisi, langkah teknis, larangan ihram, serta contoh kasus yang sering terjadi agar Anda lebih percaya diri.</p>
+
+          <blockquote>“Miqat mengajarkan batas; ihram mengajarkan rendah hati.”</blockquote>
+
+          <h2>1. Apa Itu Miqat?</h2>
+          <p>Miqat adalah batas tempat atau waktu untuk memulai ihram (niat dan mengenakan ihram) sebelum memasuki area tertentu untuk ibadah. Dengan kata lain, jamaah tidak boleh melewati miqat menuju Makkah tanpa ihram jika berniat umroh. Karena itu, muthawif biasanya mengingatkan jamaah kapan bersiap, mandi sunnah, dan berniat.</p>
+
+          <h3>Miqat Makani (Tempat) yang Umum</h3>
+          <ul>
+            <li>Dzulat Irq</li>
+            <li>Qarnul Manazil</li>
+            <li>Yalamlam</li>
+            <li>Juhfah</li>
+            <li>Dzul Hulaifah (Bir Ali)</li>
+          </ul>
+
+          <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Manasik">
+          <p class="img-caption">Gbr 7.1: Memahami miqat membuat Anda lebih tenang saat memulai umroh.</p>
+
+          <h2>2. Ihram: Niat dan Pakaian</h2>
+          <p>Ihram memiliki dua sisi: niat dan kondisi (termasuk pakaian bagi laki-laki). Jamaah laki-laki memakai dua lembar kain ihram tanpa jahitan. Jamaah perempuan memakai pakaian yang menutup aurat sebagaimana biasa, bukan kain ihram khusus, namun tetap berniat ihram. Keduanya memasuki “keadaan ihram” setelah berniat, sehingga berlaku larangan-larangan tertentu.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKVUn7iM8FMEU24/giphy.gif" class="promo-gif" alt="Promo GIF">
+          <p class="img-caption">Gbr 7.2: Fokus pada niat, lalu jalankan adab dan aturan ihram.</p>
+
+          <h2>3. Larangan Ihram (Ringkas)</h2>
+          <p>Larangan ihram biasanya disampaikan saat manasik. Ringkasnya: menjaga diri dari hal yang dilarang selama ihram, seperti memakai wangi-wangian tertentu, memotong kuku/rambut, dan tindakan yang merusak kekhusyukan. Karena variasi detail bisa berbeda dalam penjelasan fiqih, ikuti bimbingan muthawif/travel Anda agar sesuai tuntunan.</p>
+
+          <h3>Tips Aman Agar Tidak Keliru</h3>
+          <ul>
+            <li>Gunakan produk tanpa parfum mendekati miqat</li>
+            <li>Rapikan kuku dan rambut sebelum ihram</li>
+            <li>Siapkan sabuk ihram agar kain tidak mudah lepas</li>
+          </ul>
+
+          <h2>4. Contoh Kasus: Lupa Niat di Miqat</h2>
+          <p>Kasus yang sering terjadi: jamaah tertidur di pesawat dan lupa berniat di waktu yang disarankan. Karena itu, travel biasanya memberi briefing lebih awal. Jika Anda khawatir lupa, pasang alarm atau minta teman sekamar mengingatkan. Prinsipnya: siapkan diri sebelum titik miqat.</p>
+
+          <blockquote>“Ketenangan ibadah lahir dari persiapan dan bimbingan yang jelas.”</blockquote>
+
+          <h2>5. Checklist Praktis Sebelum Miqat</h2>
+          <ul>
+            <li>Mandi sunnah dan berpakaian rapi</li>
+            <li>Siapkan kain ihram (pria) dan pakaian longgar (wanita)</li>
+            <li>Gunakan perlengkapan tanpa parfum</li>
+            <li>Pastikan sudah paham niat dan talbiyah</li>
+          </ul>
+
+          <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Checklist">
+          <p class="img-caption">Gbr 7.3: Checklist sederhana menyelamatkan Anda dari panik mendadak.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKDkDbIDJieKbVm/giphy.gif" class="promo-gif" alt="Promo GIF 2">
+          <p class="img-caption">Gbr 7.4: Tenang, rapi, dan siap memulai ibadah.</p>
+        `,
+        faq: `
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Apakah perempuan harus memakai kain ihram?</h5>
+            <p class="text-gray-600">Tidak. Perempuan tetap memakai pakaian syar’i yang menutup aurat, lalu berniat ihram.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Kenapa miqat penting?</h5>
+            <p class="text-gray-600">Miqat adalah batas memulai ihram sebelum memasuki area ibadah. Ini membantu menjaga tertib manasik.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Takut lupa niat, harus bagaimana?</h5>
+            <p class="text-gray-600">Pasang alarm, ikuti briefing muthawif, dan siapkan diri sebelum mendekati miqat.</p>
+          </div>
+        `,
+        conclusion: "Miqat dan ihram bukan untuk membuat ibadah sulit, tetapi untuk menata niat dan adab. Dengan persiapan dan bimbingan yang benar, Anda bisa memulai umroh dengan tenang dan sesuai tuntunan."
+      },
+
+      "8": {
+        title: "Ziarah Sejarah Madinah: Rute Favorit, Adab, dan Tempat Bersejarah di Sekitar Masjid Nabawi",
+        tag: "Ziarah & Sejarah",
+        meta: "HELLO STAR • Edukasi Umroh 2026 • Update: 2026",
+        img: "img/galeri2.webp",
+        imgDesc: "Ilustrasi suasana Madinah dan ziarah yang tertib.",
+        excerpt: "Panduan ziarah Madinah: adab, rute umum, tempat bersejarah, serta tips agar ziarah tetap nyaman dan bermakna.",
+        author: { name: "Tim Redaksi Hello Star", role: "Tour Leader", bio: "Menyusun rute ziarah yang tertib dan nyaman agar jamaah mendapatkan manfaat tanpa kelelahan berlebih." },
+        content: `
+          <p>Madinah memiliki ketenangan yang khas. Banyak jamaah merasakan suasana yang lebih “lembut” dan menenangkan dibanding Makkah yang dinamis. Di Madinah, ziarah bukan sekadar wisata, tetapi cara mengingat sejarah perjuangan Rasulullah dan para sahabat. Agar ziarah lebih bermakna, Anda perlu memahami adab, tujuan, dan cara menjaga energi. Artikel ini merangkum rute ziarah yang umum dilakukan, adab yang perlu dijaga, serta tips agar ziarah tetap nyaman.</p>
+
+          <blockquote>“Ziarah bukan tentang banyak tempat yang dikunjungi, tetapi pelajaran yang dibawa pulang.”</blockquote>
+
+          <h2>1. Adab Ziarah di Madinah</h2>
+          <p>Adab ziarah dimulai dari niat: mencari ilmu dan mengambil hikmah. Jaga suara, hindari berdesakan, dan hormati aturan setempat. Jangan menjadikan ziarah sebagai ajang konten berlebihan. Jika ingin foto, lakukan dengan tertib dan tidak mengganggu jamaah lain.</p>
+
+          <h3>Prinsip Ringkas Adab</h3>
+          <ul>
+            <li>Tenang, tidak ribut</li>
+            <li>Ikuti arahan petugas dan pembimbing</li>
+            <li>Hormati area yang padat dan sakral</li>
+          </ul>
+
+          <img src="https://images.unsplash.com/photo-1526481280695-3c687fd643ed?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Madinah">
+          <p class="img-caption">Gbr 8.1: Suasana Madinah mengundang ketenangan dan refleksi.</p>
+
+          <h2>2. Rute Ziarah yang Umum</h2>
+          <p>Banyak travel memiliki rute yang mirip: mengunjungi masjid bersejarah, lokasi penting, dan titik yang sering disebut dalam kisah sirah. Anda tidak harus mengejar semuanya. Lebih baik mengikuti rute travel dan menyimpan energi untuk shalat di Masjid Nabawi yang menjadi pusat ibadah utama.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKVUn7iM8FMEU24/giphy.gif" class="promo-gif" alt="Promo GIF">
+          <p class="img-caption">Gbr 8.2: Ziarah yang tertib membuat hati lebih fokus pada makna.</p>
+
+          <h2>3. Menjaga Energi: Jangan “Kebanyakan Jalan”</h2>
+          <p>Ziarah sering melibatkan jalan dan berdiri lama. Pakai sepatu nyaman, bawa air minum, dan jangan lupa makan secukupnya sebelum berangkat. Jika Anda lansia atau mudah lelah, komunikasikan ke pembimbing agar mendapat pengaturan yang lebih ramah.</p>
+
+          <h3>Tips Praktis</h3>
+          <ul>
+            <li>Bawa payung lipat dan botol minum</li>
+            <li>Gunakan tas kecil, jangan bawa barang berlebihan</li>
+            <li>Sisihkan waktu istirahat di hotel</li>
+          </ul>
+
+          <h2>4. Makna Ziarah: Ambil Pelajaran, Bukan Sekadar Kunjungan</h2>
+          <p>Setiap tempat bersejarah memiliki kisah. Saat pembimbing menjelaskan, catat poin penting atau rekam dengan izin bila memungkinkan. Setelah ziarah, luangkan waktu merenung: pelajaran apa yang bisa diterapkan sepulang umroh? Banyak jamaah merasakan perubahan justru dari refleksi kecil setelah ziarah.</p>
+
+          <blockquote>“Yang membuat ziarah mengubah hidup adalah pelajaran yang menetap.”</blockquote>
+
+          <h2>5. Checklist Ziarah Madinah</h2>
+          <ul>
+            <li>Sepatu/sandal nyaman</li>
+            <li>Air minum + snack ringan</li>
+            <li>Obat pribadi</li>
+            <li>Payung/topi</li>
+            <li>Catatan kecil (opsional)</li>
+          </ul>
+
+          <img src="https://images.unsplash.com/photo-1519817914152-22f90e42b1f0?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Refleksi">
+          <p class="img-caption">Gbr 8.3: Ziarah yang tenang sering meninggalkan bekas yang mendalam.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKDkDbIDJieKbVm/giphy.gif" class="promo-gif" alt="Promo GIF 2">
+          <p class="img-caption">Gbr 8.4: Tertib, nyaman, dan penuh makna.</p>
+        `,
+        faq: `
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Apakah ziarah wajib dalam umroh?</h5>
+            <p class="text-gray-600">Tidak wajib. Namun ziarah dapat menambah wawasan dan hikmah jika dilakukan dengan adab yang baik.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Bagaimana menjaga stamina saat ziarah?</h5>
+            <p class="text-gray-600">Gunakan sepatu nyaman, minum cukup, dan jangan memaksakan diri mengejar semua lokasi.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Bolehkah foto saat ziarah?</h5>
+            <p class="text-gray-600">Boleh selama tertib, tidak mengganggu, dan mengikuti aturan di lokasi.</p>
+          </div>
+        `,
+        conclusion: "Ziarah Madinah akan terasa berharga jika Anda menjaga adab, mengatur energi, dan fokus pada pelajaran yang bisa dibawa pulang. Tidak perlu mengejar banyak tempat—cukup yang bermakna."
+      },
+
+      "9": {
+        title: "Memilih Travel PPIU Resmi: Ciri Amanah, Cara Cek Legalitas, dan Tanda Bahaya Penipuan",
+        tag: "Keamanan & Tips Travel",
+        meta: "HELLO STAR • Edukasi Umroh 2026 • Update: 2026",
+        img: "img/galeri3.webp",
+        imgDesc: "Ilustrasi jamaah memilih travel umroh secara bijak.",
+        excerpt: "Panduan memilih travel umroh: ciri PPIU resmi, pertanyaan penting sebelum daftar, dan red flag yang harus dihindari.",
+        author: { name: "Tim Redaksi Hello Star", role: "Customer Protection", bio: "Menyusun panduan aman memilih travel agar jamaah terhindar dari praktik penipuan." },
+        content: `
+          <p>Memilih travel umroh adalah keputusan penting karena menyangkut keamanan, kenyamanan, dan kelancaran ibadah. Di tengah banyaknya penawaran harga, promo, dan testimoni, jamaah perlu bersikap cermat. Travel yang amanah biasanya transparan, memiliki dokumen legalitas, dan menjelaskan detail layanan tanpa ditutup-tutupi. Artikel ini membantu Anda mengenali ciri travel PPIU resmi, cara cek legalitas, pertanyaan yang wajib ditanyakan, dan tanda bahaya yang sering muncul pada modus penipuan.</p>
+
+          <blockquote>“Harga boleh menarik, tetapi keamanan harus menenangkan.”</blockquote>
+
+          <h2>1. Kenali Apa Itu PPIU Resmi</h2>
+          <p>PPIU adalah penyelenggara perjalanan ibadah umroh yang memiliki izin. Travel resmi biasanya memiliki identitas usaha yang jelas: nama perusahaan, alamat kantor, kontak, dan alur layanan yang rapi. Mereka juga cenderung memiliki SOP manasik, pembimbing ibadah, serta informasi paket yang transparan.</p>
+
+          <h2>2. Ciri Travel Umroh yang Amanah</h2>
+          <p>Travel amanah tidak menjanjikan hal yang tidak realistis. Mereka menjelaskan dengan detail: jadwal, hotel, maskapai, konsumsi, fasilitas, dan apa yang termasuk/tidak termasuk. Selain itu, mereka punya layanan customer service yang responsif dan tidak “menghilang” setelah Anda bayar DP.</p>
+
+          <h3>Checklist Ciri Amanah</h3>
+          <ul>
+            <li>Kontrak/ketentuan tertulis jelas</li>
+            <li>Detail paket transparan</li>
+            <li>Kantor dan kontak dapat diverifikasi</li>
+            <li>Manasik dan pembimbing tersedia</li>
+          </ul>
+
+          <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Travel resmi">
+          <p class="img-caption">Gbr 9.1: Travel profesional biasanya rapi dalam informasi dan administrasi.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKVUn7iM8FMEU24/giphy.gif" class="promo-gif" alt="Promo GIF">
+          <p class="img-caption">Gbr 9.2: Jangan buru-buru, cek dulu dengan tenang.</p>
+
+          <h2>3. Pertanyaan Wajib Sebelum Daftar</h2>
+          <p>Jangan sungkan bertanya detail. Travel yang baik tidak akan tersinggung, justru senang karena jamaah serius. Tanyakan hotel (jarak/kelas), maskapai, jadwal keberangkatan, ketentuan refund, dan detail biaya. Mintalah semuanya tertulis.</p>
+
+          <h3>Contoh Pertanyaan</h3>
+          <ul>
+            <li>Hotel bintang berapa dan berapa menit dari masjid?</li>
+            <li>Maskapai apa dan apakah direct/ transit?</li>
+            <li>Apa saja yang termasuk harga paket?</li>
+            <li>Bagaimana ketentuan pembatalan/refund?</li>
+          </ul>
+
+          <h2>4. Red Flag: Tanda Bahaya Penipuan</h2>
+          <p>Waspadai penawaran yang terlalu indah: harga jauh di bawah pasar tanpa penjelasan, janji “pasti berangkat cepat” tanpa jadwal jelas, atau meminta transfer ke rekening pribadi. Modus lain: testimoni palsu, tekanan untuk bayar hari itu juga, dan menolak memberikan informasi tertulis.</p>
+
+          <blockquote>“Jika Anda dipaksa cepat bayar, biasanya ada yang disembunyikan.”</blockquote>
+
+          <h2>5. Tips Aman Saat Pembayaran</h2>
+          <p>Selalu minta invoice/resi, pastikan rekening perusahaan, dan simpan bukti komunikasi. Jika memungkinkan, lakukan pembayaran bertahap sesuai progress. Hindari pembayaran tunai tanpa bukti. Travel profesional akan memberi dokumen transaksi yang rapi.</p>
+
+          <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1400&q=80" class="w-full rounded-2xl my-6 shadow-md border border-gray-200" alt="Pembayaran aman">
+          <p class="img-caption">Gbr 9.3: Bukti transaksi dan perjanjian tertulis adalah pelindung Anda.</p>
+
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJ6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZTVoNnB6ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKDkDbIDJieKbVm/giphy.gif" class="promo-gif" alt="Promo GIF 2">
+          <p class="img-caption">Gbr 9.4: Aman dulu, baru tenang beribadah.</p>
+        `,
+        faq: `
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Harga murah selalu berbahaya?</h5>
+            <p class="text-gray-600">Tidak selalu. Tapi Anda wajib minta penjelasan detail fasilitas dan bukti tertulis. Jika terlalu jauh di bawah pasar tanpa alasan jelas, waspada.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Kenapa harus ada perjanjian tertulis?</h5>
+            <p class="text-gray-600">Agar hak dan kewajiban jelas: jadwal, fasilitas, ketentuan refund, dan detail biaya.</p>
+          </div>
+          <div class="p-5 rounded-2xl bg-white border border-gray-200">
+            <h5 class="font-bold text-emerald-950 mb-2">Tanda paling jelas travel tidak amanah?</h5>
+            <p class="text-gray-600">Menolak transparansi, memaksa bayar cepat, atau pembayaran ke rekening pribadi tanpa dokumen resmi.</p>
+          </div>
+        `,
+        conclusion: "Memilih travel bukan soal harga termurah, tapi soal ketenangan ibadah. Cek legalitas, minta detail tertulis, kenali red flag, dan pilih travel yang transparan agar perjalanan aman dan nyaman."
+      }
+    };
+
+    // =========================
+    // ✅ GET ARTICLE BY ID
+    // =========================
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id') || "1";
+    const art = database[id] || database["1"];
+
+    // Fill page
+    document.getElementById('page-title').innerText = art.title + " - Hello Star";
+    document.getElementById('art-h1').innerText = art.title;
+    document.getElementById('art-meta').innerText = art.meta || "";
+    document.getElementById('art-tag').innerText = art.tag ? ("#" + art.tag) : "#Edukasi";
+    document.getElementById('art-img').src = art.img;
+    document.getElementById('art-hero-bg').src = art.img;
+    document.getElementById('art-img-cap').innerText = "Foto: " + (art.imgDesc || "Dokumentasi");
+    document.getElementById('art-body').innerHTML = art.content;
+    document.getElementById('art-faq').innerHTML = art.faq;
+    document.getElementById('art-conclusion').innerText = art.conclusion;
+
+    // Author
+    document.getElementById('author-name').innerText = art.author?.name || "Tim Redaksi";
+    document.getElementById('author-role').innerText = art.author?.role || "Expert Hello Star Travel";
+    document.getElementById('author-bio').innerText = art.author?.bio || "Panduan dan edukasi untuk jamaah umroh agar lebih siap dan nyaman.";
+
+    // =========================
+    // ✅ AUTO TOC (H2 & H3)
+    // =========================
+    const headings = document.getElementById('art-body').querySelectorAll('h2, h3');
+    const tocList = document.getElementById('toc-list');
+    tocList.innerHTML = "";
+
+    headings.forEach((h, i) => {
+      const text = (h.innerText || "").trim();
+      if (!text) return;
+
+      h.id = "sec-" + i;
+      const isH3 = h.tagName === 'H3';
+
+      tocList.innerHTML += `
+        <a href="#sec-${i}"
+          class="block hover:text-yellow-600 transition ${isH3 ? 'ml-4 opacity-80' : 'font-bold text-emerald-950'}">
+          ${isH3 ? '• ' : ''}${text}
+        </a>
+      `;
+    });
+
+    // TOC toggle
+    function toggleTOC() {
+      const list = document.getElementById('toc-list');
+      const icon = document.getElementById('toc-icon');
+      list.classList.toggle('toc-hidden');
+      icon.classList.toggle('rotate-180');
+    }
+    // default: open
+    // if you want default closed, uncomment line below
+    // document.getElementById('toc-list').classList.add('toc-hidden');
+
+    // =========================
+    // ✅ SHARE LINKS
+    // =========================
+    const url = window.location.href;
+    const shareText = encodeURIComponent("Baca artikel bermanfaat ini: " + art.title + " — ");
+    document.getElementById('share-wa').href = `https://wa.me/?text=${shareText}${encodeURIComponent(url)}`;
+    document.getElementById('share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    document.getElementById('share-x').href = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(url)}`;
+
+    // =========================
+    // ✅ RELATED (Baca Juga min 2) + 3 Bottom
+    // =========================
+    const sideRel = document.getElementById('side-related');
+    const bottomRel = document.getElementById('bottom-related');
+
+    const keys = Object.keys(database);
+    const related = keys.filter(k => k !== id);
+
+    // pick at least 2 for sidebar
+    const sidePick = related.slice(0, 2);
+    sideRel.innerHTML = "";
+    sidePick.forEach(rid => {
+      const r = database[rid];
+      sideRel.innerHTML += `
+        <a href="article.html?id=${rid}" class="block border-b border-white/10 pb-4 hover:text-yellow-400 transition">
+          <h5 class="text-sm font-bold leading-snug">${r.title}</h5>
+          <p class="text-[11px] opacity-70 mt-2 leading-relaxed">${r.excerpt || "Klik untuk membaca artikel terkait."}</p>
+          <p class="text-[10px] opacity-50 mt-2 uppercase tracking-widest">Klik Baca Selengkapnya</p>
+        </a>
+      `;
+    });
+
+    // bottom 3 cards
+    const bottomPick = related.slice(0, 3);
+    bottomRel.innerHTML = "";
+    bottomPick.forEach(rid => {
+      const r = database[rid];
+      bottomRel.innerHTML += `
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col hover:shadow-xl transition">
+          <img src="${r.img}" class="h-44 w-full object-cover" alt="${r.title}">
+          <div class="p-6 flex-grow flex flex-col">
+            <h4 class="font-bold text-emerald-950 mb-3 leading-snug">${r.title}</h4>
+            <p class="text-gray-500 text-sm mb-5 flex-grow">${r.excerpt || r.imgDesc || "Artikel rekomendasi untuk Anda."}</p>
+            <a href="article.html?id=${rid}" class="inline-flex items-center justify-center gap-2 py-2 px-5 gold-gradient text-gray-900 font-bold rounded-full text-xs shadow-md hover:opacity-95">
+              Baca Selengkapnya <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      `;
+    });
+
+    if (sidePick.length === 0) {
+      sideRel.innerHTML = `<p class='text-xs opacity-70'>Artikel menarik lainnya akan segera hadir.</p>`;
+    }
+
+    // =========================
+    // ✅ navbar solid on scroll + mobile menu
+    // =========================
+    document.getElementById('hamburger').onclick = () => document.getElementById('mobile-menu').classList.toggle('open');
+
+    const navbar = document.getElementById('navbar');
+    function onScroll() {
+      if (window.scrollY > 30) navbar.classList.add('nav-solid');
+      else navbar.classList.remove('nav-solid');
+    }
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+  </script>
+    <!-- Floating WA + Back To Top (Paste sebelum </body>) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  .hs-float-wrap{
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+    pointer-events: none; /* biar hanya tombol yang bisa diklik */
+  }
+
+  .hs-float-btn{
+    pointer-events: auto;
+    width: 54px;
+    height: 54px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,.22);
+    border: 2px solid rgba(255,255,255,.35);
+    transform: translateZ(0);
+    transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease, visibility .2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .hs-float-btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(0,0,0,.28);
+  }
+
+  /* WhatsApp: kontras hijau terang + ring emas */
+  .hs-wa{
+    background: radial-gradient(circle at 30% 30%, #34d399 0%, #22c55e 45%, #16a34a 100%);
+    border-color: rgba(250, 204, 21, .9);
+  }
+  .hs-wa i{ color: #fff; font-size: 24px; }
+
+  /* Back to top: emerald gelap + gold accent */
+  .hs-top{
+    background: radial-gradient(circle at 30% 30%, #0b3b2f 0%, #064e3b 45%, #022c22 100%);
+    border-color: rgba(250, 204, 21, .95);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+  }
+  .hs-top.show{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .hs-top i{ color: #facc15; font-size: 20px; }
+
+  /* Tooltip kecil (opsional) */
+  .hs-tip{
+    position: absolute;
+    right: 64px;
+    white-space: nowrap;
+    background: rgba(2,44,34,.92);
+    color: #fff;
+    font-size: 12px;
+    padding: 7px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(250,204,21,.35);
+    opacity: 0;
+    transform: translateY(2px);
+    transition: opacity .18s ease, transform .18s ease;
+    pointer-events: none;
+  }
+  .hs-float-btn:hover .hs-tip{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Bubble ping (kontras) */
+  .hs-ping{
+    position:absolute;
+    inset:-6px;
+    border-radius:999px;
+    border: 2px solid rgba(250,204,21,.35);
+    animation: hsPing 1.8s ease-out infinite;
+  }
+  @keyframes hsPing{
+    0%{ transform: scale(.92); opacity:.0; }
+    15%{ opacity:.7; }
+    100%{ transform: scale(1.25); opacity:0; }
+  }
+
+  @media (max-width: 480px){
+    .hs-float-btn{ width: 52px; height: 52px; }
+    .hs-tip{ display:none; }
+    .hs-float-wrap{ right: 14px; bottom: 14px; }
+  }
+</style>
+
+<div class="hs-float-wrap" aria-label="Floating actions">
+  <!-- Back to Top -->
+  <button id="hsTopBtn" class="hs-float-btn hs-top" type="button" aria-label="Kembali ke atas">
+    <span class="hs-tip">Ke Atas</span>
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </button>
+   <!-- WhatsApp -->
+  <a id="hsWaBtn" class="hs-float-btn hs-wa" href="#" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+    <span class="hs-ping" aria-hidden="true"></span>
+    <span class="hs-tip">Konsultasi WhatsApp</span>
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+  </a>
+</div>
+
+<script>
+  (function(){
+    // ====== SET WA NUMBER HERE ======
+    const WA_NUMBER = "6281234567890"; // ganti ini (tanpa +)
+    const DEFAULT_TEXT = "Halo Hello Star, saya mau konsultasi Umroh. Bisa dibantu?";
+
+    const waBtn = document.getElementById("hsWaBtn");
+    const topBtn = document.getElementById("hsTopBtn");
+
+    // Build WA link (auto include page url)
+    const pageUrl = window.location.href;
+    const text = encodeURIComponent(DEFAULT_TEXT + " \n\nLink halaman: " + pageUrl);
+    waBtn.href = "https://wa.me/" + WA_NUMBER + "?text=" + text;
+
+    // Back to top show/hide
+    const toggleTop = () => {
+      if(window.scrollY > 420) topBtn.classList.add("show");
+      else topBtn.classList.remove("show");
+    };
+
+    window.addEventListener("scroll", toggleTop, { passive: true });
+    toggleTop();
+
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  })();
+</script>
 </body>
 </html>
